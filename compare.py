@@ -45,10 +45,42 @@ b = ['a','b','c','d','e']
 c = ['A', 'B', 'x', 'D', 'E']
 
 
+def combine_lists(A, B):
+    print(A)
+    
+    for b in B:
+        print(b)
+        A.append(b)
+    print("hello")
+    print(A)
+
+    return A #the new, combinded list
+
+
 
 
 #TODO given two lists, return the number of unique comparisons possible within the separate lists (same) and between the two lists (diff) 
-print(checkCompares(a, b, c))
+def same_diff(A):
+    print(A)
+    possible = combine_lists(A[0][0], A[0][1])
+    comps = getCompares(possible)
+    print("comps length", len(comps))
+    same = 0
+    diff = 0
+    for i in comps:
+        for j in A:
+            if i in getCompares(j):
+                same +=1
+                print("same!")
+            else:
+                diff +=1
+    return (same, diff)
+            
+    
+    
+    
+    
+
 
 
 
