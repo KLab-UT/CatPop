@@ -1,9 +1,6 @@
 # Takes in our extremely long output of FA's and SA's, and puts the first occurrence of FA and SA into
 # our first group.
-
-
-#import get_all_combinations
-
+# This function doesn't necessarily complete what we are trying to accomplish
 
 
 example = ['A','B','C','D','E','F']
@@ -31,22 +28,3 @@ def compare(A,L1,L2):
 compare(example, FA, SA)
 
 
-
-
-
-'''
-def is_value_in_list(list_name,value):
-    for i in list_name:
-        if value in list_name:
-            return True
-        return False
-
-def compare_values(L1,value1,value2):
-    a = is_value_in_list(L1,value1)
-    b = is_value_in_list(L1,value2)
-    if a and b == True:
-        return "same"
-    return "different"
-
-print(compare_values(FA,'a', 'a'))
-'''
