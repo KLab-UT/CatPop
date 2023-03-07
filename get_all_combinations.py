@@ -1,6 +1,10 @@
 import itertools
 import compare
-indv = ['MAH','MER','PVM','SUM','STO','CHR','RON','ROC','ELF','NAM','MAR','PAP']
+
+
+# Function that returns every combination of our list, separated into two lists
+
+
 def get_combinations(individuals):
     # Generate all possible combinations of 6 individuals
     combinations = itertools.combinations(individuals, 6)
@@ -21,21 +25,8 @@ def get_combinations(individuals):
             fa_sa_pairs.append(current_pairs)
     return fa_sa_pairs
 
-print("suuuu dude")
-
-print(compare.same_diff(get_combinations(indv)))
 
 
-
-
+# This function below can be used to help visualize what it is returning.
 # for i, pair in enumerate(fa_sa_pairs):
 #     print(f"Pair {i}: {pair}")
-
-
-# Next step (while in for loop): from all pairwise comparisons,
-# determine which pairs are "same" and which are "diff" based on
-# which set they are in (FA or SA). "Same" comparisons will be those
-# that are in the same set with each other. "Diff" comparisons will not be in the same set.
-# One approach: look in FA set for both names. If they both do OR don't
-# appear there, you know its the same! If only one appears, you know its
-# a "diff" comparison
