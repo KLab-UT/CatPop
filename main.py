@@ -11,10 +11,14 @@ import get_all_combinations.py
 # [[D,E,F], [A,B,C]] are mirror 'images'
 import compare.py
 
+# Current list of populations we are making the comparisons between
+indv = ['MAH','MER','PVM','SUM','STO','CHR','RON','ROC','ELF','NAM','MAR','PAP']
+
+# When called, returns every possible combinations
+print(get_combinations(indv))
 
 
-
-
+print(compare.same_diff(get_combinations(indv)))
 
 
 
