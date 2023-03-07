@@ -66,7 +66,7 @@ def same_diff(A):
     unique = []
     same = 0
     diff = 0
-    for j in range(len(A)):
+    for j in range(len(A)): # get rid of this if you just want to do one pair (66 comparisons)
         # A[j] is each pair of 12 choose 6
         possible = combine_lists(A[j][0], A[j][1])
         comps = getCompares(possible)
