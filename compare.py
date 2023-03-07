@@ -18,7 +18,8 @@ def getCompares(A):
     compares = []
     for i in range(len(A)-1):
         for j in range(i+1, len(A)):
-            compares.append(Compare(A[i], A[j]))
+            c = Compare(A[i], A[j])
+            compares.append(c)
             
     return compares
 
@@ -46,34 +47,39 @@ c = ['A', 'B', 'x', 'D', 'E']
 
 
 def combine_lists(A, B):
-    print(A)
     
     for b in B:
-        print(b)
         A.append(b)
-    print("hello")
-    print(A)
+    #print("hello")
+    #print("Combined: ", A)
 
     return A #the new, combinded list
 
 
 
 
-#TODO given two lists, return the number of unique comparisons possible within the separate lists (same) and between the two lists (diff) 
+#Take a list of pairs of lists of populations, for each pair, checks if there are any unique comparisons between the pair that are not possible within the idividual lists of populations
+#returns the number of unique comparisons possible within the separate lists (same) and between the two lists (diff) 
+#idk if this is what we want because it finds no unique comparissons
 def same_diff(A):
-    print(A)
-    possible = combine_lists(A[0][0], A[0][1])
-    comps = getCompares(possible)
-    print("comps length", len(comps))
+    #print(A)
+    unique = []
     same = 0
     diff = 0
-    for i in comps:
-        for j in A:
-            if i in getCompares(j):
+    for j in range(len(A)):
+        # A[j] is each pair of 12 choose 6
+        possible = combine_lists(A[j][0], A[j][1])
+        comps = getCompares(possible)
+        #print("comps length", len(comps))
+        for i in comps:
+            if i in getCompares(A[j][0]) or i in getCompares(A[j][1]):
                 same +=1
-                print("same!")
+                #print("same!")
             else:
+                print("Unique: ", i)
+                unique.append(i)
                 diff +=1
+    print("Total unique: ", len(unique))
     return (same, diff)
             
     
