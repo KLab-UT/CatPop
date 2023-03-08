@@ -44,9 +44,6 @@ def combine_lists(A, B):
 
     return combined #the new, combined list
 
-
-
-
 # Take a list of pairs of lists of populations, for each pair, checks if there are any unique comparisons between the pair that are not possible within the idividual lists of populations
 # returns the number of unique comparisons possible within the separate lists (same) and between the two lists (diff) 
 # idk if this is what we want because it finds no unique comparissons
@@ -79,8 +76,4 @@ def same_diff(A):
             unique.append(i)
     print("Total unique: ", len(unique))
     return (same, diff)
-
-
-
-
 
