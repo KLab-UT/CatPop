@@ -1,9 +1,6 @@
 # Takes in our extremely long output of FA's and SA's, and puts the first occurrence of FA and SA into
 # our first group.
-
-
-#import get_all_combinations
-
+# This function doesn't necessarily complete what we are trying to accomplish
 
 
 example = ['A','B','c','D','E','F']
@@ -31,6 +28,7 @@ def compare(A,L1,L2):
 compare(example, FA, SA)
 
 
+<<<<<<< HEAD
 
 
 class Comparison:
@@ -115,3 +113,5 @@ def compare_values(L1,value1,value2):
 
 print(compare_values(FA,'a', 'a'))
 '''
+=======
+>>>>>>> 8b49e69b1cc4b6d3c2fb4d8650bf7ee5fa93efda
