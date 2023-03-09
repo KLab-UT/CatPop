@@ -15,6 +15,20 @@ import compare
 indv = ['MAH','MER','PVM','SUM','STO','CHR','RON','ROC','ELF','NAM','MAR','PAP']
 
 # When called, returns every possible combinations
+
+duplicates = gac.get_combinations(indv)  
+print(duplicates)
+print(len(duplicates))
+
+#Removing duplicates
+for count, i in enumerate(duplicates):
+    pair = Compare(i[0], i[1])
+    for j in duplicates[count+1:]:
+        c2 = Compare(j[0], j[1])
+        d = pair.Is_duplicate(c2)
+        print(d)
+        if d:
+            print(str(d))
 print(get_combinations(indv))
 
 
