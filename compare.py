@@ -7,14 +7,14 @@ class Compare:
     def __init__(self, a, b):
         self.pair = (a, b)
 
-    def __eq__(self, c2):
+    def Is_duplicate(self, c2):
         if self.pair[0] == c2.pair[0] and self.pair[1] == c2.pair[1]:
             return True
         if self.pair[0] == c2.pair[1] and self.pair[1] == c2.pair[0]:
             return True
         return False
 
-    def __str__(self):
+    def Get_pair(self):
         return (str(self.pair[0]), str(self.pair[1]))
 
 # Creates a list of Class Compare objects that represent all possible pairwise
