@@ -6,15 +6,10 @@
 class Compare:
     def __init__(self, a, b):
         self.pair = (a, b)
-<<<<<<< HEAD
         self.key = None
         self.fst = None
         
-    def __eq__(self, c2):
-=======
-
     def Is_duplicate(self, c2):
->>>>>>> 8b49e69b1cc4b6d3c2fb4d8650bf7ee5fa93efda
         if self.pair[0] == c2.pair[0] and self.pair[1] == c2.pair[1]:
             return True
         if self.pair[0] == c2.pair[1] and self.pair[1] == c2.pair[0]:
@@ -23,7 +18,6 @@ class Compare:
 
     def Get_pair(self):
         return (str(self.pair[0]), str(self.pair[1]))
-<<<<<<< HEAD
     
     
     #TODO generate fst key for given compare and makes sure it is valid for the fst dictionary
