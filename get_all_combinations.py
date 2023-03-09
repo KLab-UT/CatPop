@@ -21,10 +21,33 @@ def get_combinations(individuals):
             fa_sa_pairs.append(current_pairs)
     return fa_sa_pairs
 
+
+##TODO parse input file into dictionary
+def makeDict(filename):
+    with open(filename, 'r') as f:
+        keys = f.readline().strip().split(",")
+        values = f.readline().strip().split(",")
+        mDict = dict(zip(keys, values))
+        mDict.pop('ï»¿geneID')
+        return dict(zip(keys, values))
+    
+    
 print("suuuu dude")
 
-print(compare.same_diff(get_combinations(indv)))
+mDict = makeDict("PracticeFstData_OneGene.csv")
+mKeys = compare.same_diff(get_combinations(indv), mDict)
+found = 0
+total = 0
+print(len(mKeys))
+print(len(mDict))
+print(mKeys)
+for mkey in mKeys:
+    if mkey.key in mDict:
+        found +=1
+    else:
+        print(mkey)
 
+print(found)
 
 
 

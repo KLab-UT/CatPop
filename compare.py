@@ -1,6 +1,8 @@
 class Compare:
     def __init__(self, a, b):
         self.pair = (a, b)
+        self.key = None
+        self.fst = None
         
     def __eq__(self, c2):
         if self.pair[0] == c2.pair[0] and self.pair[1] == c2.pair[1]:
@@ -11,7 +13,23 @@ class Compare:
     
     def __str__(self):
         return (str(self.pair[0]), str(self.pair[1]))
-
+    
+    
+    #TODO generate fst key for given compare and makes sure it is valid for the fst dictionary
+    def getKey(self, mDict):
+        key1 = ("Fst_" + str(self.pair[0]) + "_" + str(self.pair[1]))
+        key2 = ("Fst_" + str(self.pair[1]) + "_" + str(self.pair[0]))
+        print(key1)
+        print(key2)
+        if key1 in mDict:
+            self.key = key1
+            self.fst = mDict[key1]
+        elif key2 in mDict:
+            self.key = key2
+            self.fst = mDict[key2]
+        else:
+            print("Error! key not found ")
+        return self
 
 #return a list of all possible compares in A
 def getCompares(A):
@@ -22,25 +40,22 @@ def getCompares(A):
             compares.append(c)      
     return compares
 
-
-
 def combine_lists(A, B):
     combined = []
     for a in A:
         combined.append(a)
-    
     for b in B:
         combined.append(b)
-
     return combined #the new, combinded list
 
 
+##Take a list of pairs of lists of populations, for each pair, checks if there are any unique comparisons between the
+#pair that are not possible within the idividual lists of populations
+#Tracks the number of unique comparisons possible within the separate lists (same) and between the two lists (diff)
+#Takes a dictionary with {["Fst_pop1_pop2"]:[fst]} and assigns each compare with its correst key and fst value
+#returns a list of unique (diff) comparisons
 
-
-##Take a list of pairs of lists of populations, for each pair, checks if there are any unique comparisons between the pair that are not possible within the idividual lists of populations
-#returns the number of unique comparisons possible within the separate lists (same) and between the two lists (diff) 
-#idk if this is what we want because it finds no unique comparissons
-def same_diff(A):
+def same_diff(A, mDict):
     #print(A)
     unique = []
     same = 0
@@ -50,18 +65,16 @@ def same_diff(A):
     possible = combine_lists(A[0][0], A[0][1])
     comps = getCompares(possible)
     #print("comps length", len(comps))
+    keys = []
     for i in comps:
-        print(i.pair)
-        print(A[0][0])
-        print(A[0][1])
+        keys.append(i.getKey(mDict))
         if i in getCompares(A[0][0]) or i in getCompares(A[0][1]): 
             same +=1
         else:
-            print("Diff!")
             diff +=1
             unique.append(i)
     print("Total unique: ", len(unique))
-    return (same, diff)
+    return (keys)
             
     
 
