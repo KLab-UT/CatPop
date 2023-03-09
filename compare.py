@@ -8,6 +8,8 @@ class Compare:
         self.pair = (a, b)
         self.key = None
         self.fst = None
+    def strip_sort(self):
+        self.strip()
         
     def Is_duplicate(self, c2):
         if self.pair[0] == c2.pair[0] and self.pair[1] == c2.pair[1]:
@@ -35,13 +37,11 @@ class Compare:
         else:
             print("Error! key not found ")
         return self
-=======
 
 # Creates a list of Class Compare objects that represent all possible pairwise
 # comparisons of elements in the input list. This list can be used to compare
 # elements in the input list using __eq__ method of the Compare Class
 # return a list of all possible compares in A
->>>>>>> 8b49e69b1cc4b6d3c2fb4d8650bf7ee5fa93efda
 
 def getCompares(A):
     compares = []
@@ -51,18 +51,14 @@ def getCompares(A):
             compares.append(c)
     return compares
 
-<<<<<<< HEAD
-=======
 
 # Combines list A and B by appending all elements to combined, in the order in
 # which they appear in the input lists.
 
->>>>>>> 8b49e69b1cc4b6d3c2fb4d8650bf7ee5fa93efda
 def combine_lists(A, B):
     combined = []
     for a in A:
         combined.append(a)
-<<<<<<< HEAD
     for b in B:
         combined.append(b)
     return combined #the new, combinded list
@@ -75,7 +71,6 @@ def combine_lists(A, B):
 #returns a list of unique (diff) comparisons
 
 def same_diff(A, mDict):
-=======
 
     for b in B:
         combined.append(b)
@@ -93,7 +88,6 @@ def same_diff(A, mDict):
 
 
 def same_diff(A):
->>>>>>> 8b49e69b1cc4b6d3c2fb4d8650bf7ee5fa93efda
     #print(A)
     unique = []
     same = 0
@@ -105,27 +99,21 @@ def same_diff(A):
     #print("comps length", len(comps))
     keys = []
     for i in comps:
-<<<<<<< HEAD
         keys.append(i.getKey(mDict))
         if i in getCompares(A[0][0]) or i in getCompares(A[0][1]): 
-=======
         print(i.pair)
         print(A[0][0])
         print(A[0][1])
         if i in getCompares(A[0][0]) or i in getCompares(A[0][1]):
->>>>>>> 8b49e69b1cc4b6d3c2fb4d8650bf7ee5fa93efda
             same +=1
         else:
             diff +=1
             unique.append(i)
     print("Total unique: ", len(unique))
-<<<<<<< HEAD
     return (keys)
             
     
 
 
-=======
     return (same, diff)
->>>>>>> 8b49e69b1cc4b6d3c2fb4d8650bf7ee5fa93efda
 
