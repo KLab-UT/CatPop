@@ -101,9 +101,9 @@ def same_diff(A):
     for i in comps:
         keys.append(i.getKey(mDict))
         if i in getCompares(A[0][0]) or i in getCompares(A[0][1]): 
-        print(i.pair)
-        print(A[0][0])
-        print(A[0][1])
+            print(i.pair)
+            print(A[0][0])
+            print(A[0][1])
         if i in getCompares(A[0][0]) or i in getCompares(A[0][1]):
             same +=1
         else:
@@ -115,5 +115,5 @@ def same_diff(A):
     
 
 
-    return (same, diff)
+#    return (same, diff)
 

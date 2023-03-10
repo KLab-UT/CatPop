@@ -26,9 +26,9 @@ def get_combinations(individuals):
 def makeDict(filename):
     with open(filename, 'r') as f:
         keys = f.readline().strip().split(",")
+        keys = keys[1:]
         values = f.readline().strip().split(",")
         mDict = dict(zip(keys, values))
-        mDict.pop('ï»¿geneID')
         return dict(zip(keys, values))
     
     
@@ -60,5 +60,4 @@ print(found)
 # which set they are in (FA or SA). "Same" comparisons will be those
 # that are in the same set with each other. "Diff" comparisons will not be in the same set.
 # One approach: look in FA set for both names. If they both do OR don't
-# appear there, you know its the same! If only one appears, you know its
-# a "diff" comparison
+# appear there, you know its the same! If only one appears, you know its a "diff" comparison
