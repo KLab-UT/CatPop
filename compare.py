@@ -22,7 +22,7 @@ class Compare:
         return (str(self.pair[0]), str(self.pair[1]))
     
     
-    #TODO generate fst key for given compare and makes sure it is valid for the fst dictionary
+    #generates valid fst key for given compare and assigns the compare fst (self.fst) to the appropriate value from the dictionary
     def getKey(self, mDict):
         key1 = ("Fst_" + str(self.pair[0]) + "_" + str(self.pair[1]))
         key2 = ("Fst_" + str(self.pair[1]) + "_" + str(self.pair[0]))
@@ -63,31 +63,15 @@ def combine_lists(A, B):
         combined.append(b)
     return combined #the new, combinded list
 
-
-##Take a list of pairs of lists of populations, for each pair, checks if there are any unique comparisons between the
-#pair that are not possible within the idividual lists of populations
-#Tracks the number of unique comparisons possible within the separate lists (same) and between the two lists (diff)
-#Takes a dictionary with {["Fst_pop1_pop2"]:[fst]} and assigns each compare with its correst key and fst value
-#returns a list of unique (diff) comparisons
-
-def same_diff(A, mDict):
-
-    for b in B:
-        combined.append(b)
-
-    return combined #the new, combined list
-
-# Take a list of pairs of lists of populations, for each pair, checks if there are any unique comparisons between the pair that are not possible within the idividual lists of populations
-# returns the number of unique comparisons possible within the separate lists (same) and between the two lists (diff) 
-# idk if this is what we want because it finds no unique comparissons
-#
 # Takes a list of pairs of values 'A', anc creates a list of all pairwise
 # comparisons of the elements in the first two pairs of values, checks which of
 # these pairs are same or diff, and prints total number of unique pairs with
 # diff values.
+#Tracks the number of unique comparisons possible within the separate lists (same) and between the two lists (diff)
+#Takes a dictionary with {["Fst_POP1_POP2"]:[fst]} and assigns each compare with its correst key and fst value by calling th makeKey function
+#returns a list of unique (diff) compare 
 
-
-def same_diff(A):
+def same_diff(A, mDict):
     #print(A)
     unique = []
     same = 0
@@ -110,7 +94,7 @@ def same_diff(A):
             diff +=1
             unique.append(i)
     print("Total unique: ", len(unique))
-    return (keys)
+    return (unique)
             
     
 
