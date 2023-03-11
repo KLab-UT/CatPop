@@ -1,4 +1,5 @@
-'''A Compare object represents a possible comparison between two populations
+'''A Compare object represents a possible comparison between two populations and has the attributes pair(POP1, POP2), key (for the fst dictionary), and fst 
+(to store thr fst value)
 , the == operatater is overridden so that (POP1, POP2) = (POP2, POP1). The class includes the getKey function which 
 generates a valid fst key for a compare and assigns the compare fst (self.fst) to the appropriate value from the given fst dictionary
 compare.py also contains the functions; getCompares, which return a list of all possible compares (one population to another) in the given list of populations
