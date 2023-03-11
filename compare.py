@@ -1,7 +1,10 @@
-# The Compare class is used to compare two pairs of values for equality,
-# regardless of their order, and returns a string representation of the pair.
-# When using the __eq__ method, the c2 is the argument passed into the
-# function, and would be the list of populations.
+'''A Compare object represents a possible comparison between two populations
+, the == operatater is overridden so that (POP1, POP2) = (POP2, POP1). The class includes the getKey function which 
+generates a valid fst key for a compare and assigns the compare fst (self.fst) to the appropriate value from the given fst dictionary
+compare.py also contains the functions; getCompares, which return a list of all possible compares (one population to another) in the given list of populations
+combine_lists, which add two lists of populations together, and same_diff which formates compares by creating compare objects and calling getKey, then returns any 
+unique comparisons found in the combined list that are not in the uncombined lists'''
+
 
 class Compare:
     def __init__(self, a, b):
@@ -11,7 +14,7 @@ class Compare:
     def strip_sort(self):
         self.strip()
         
-    def Is_duplicate(self, c2):
+    def __eq__(self, c2):
         if self.pair[0] == c2.pair[0] and self.pair[1] == c2.pair[1]:
             return True
         if self.pair[0] == c2.pair[1] and self.pair[1] == c2.pair[0]:
@@ -41,7 +44,7 @@ class Compare:
 # Creates a list of Class Compare objects that represent all possible pairwise
 # comparisons of elements in the input list. This list can be used to compare
 # elements in the input list using __eq__ method of the Compare Class
-# return a list of all possible compares in A
+# return a list of all possible compares (one population to another) in A
 
 def getCompares(A):
     compares = []
@@ -69,7 +72,7 @@ def combine_lists(A, B):
 # diff values.
 #Tracks the number of unique comparisons possible within the separate lists (same) and between the two lists (diff)
 #Takes a dictionary with {["Fst_POP1_POP2"]:[fst]} and assigns each compare with its correst key and fst value by calling th makeKey function
-#returns a list of unique (diff) compare 
+#returns a list of unique (diff) compares 
 
 def same_diff(A, mDict):
     #print(A)
@@ -98,6 +101,4 @@ def same_diff(A, mDict):
             
     
 
-
-#    return (same, diff)
 
