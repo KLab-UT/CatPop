@@ -19,8 +19,6 @@ def Make_fst_dictionary(file_name):
 def Get_fst(a, b, fst_dict): #a and b are 2 different populations being compared
     key1 = "Fst_"+a+"_"+b
     key2 = "Fst_"+b+"_"+a
-    print(key1)
-    print(key2)
     if key1 in fst_dict:
         fst = fst_dict[key1]
     if key2 in fst_dict:
@@ -28,21 +26,25 @@ def Get_fst(a, b, fst_dict): #a and b are 2 different populations being compared
     return fst
 
 #Get average FST for same and different
-def Same_fst_avg(listA, listB): #use twice for list A and list B
-    fst_sum = 0
-    lists = [listA, listB]
-    for list in lists:
-        for count, i in enumerate(list):
-            for j in list[count+1:]:
-                fst_sum += Get_fst(i, j)
+def Same_fst_avg(list_a, list_b, fst_dict): #use twice for list A and list B
+    fst_sum = 0.0
+    lists = [list_a, list_b]
+    for li in lists:
+        for count, i in enumerate(li):
+            for j in li[count+1:]:
+                fst = Get_fst(i, j, fst_dict)
+                fst_sum += float(fst)
     fst_avg = fst_sum/30
-def Diff_fst_avg(listA, listB): # get fst of populations in different lists
-    fst_sum = 0
-    for i in listA:
-        for j in listB:
-            fst_sum += Get_fst(i, j)
+    return fst_avg
+def Diff_fst_avg(list_a, list_b, fst_dict): # get fst of populations in different lists
+    fst_sum = 0.0
+    for i in list_a:
+        for j in list_b:
+            fst = Get_fst(i, j, fst_dict)
+            fst_sum += float(fst)
     fst_avg = fst_sum/36
+    return fst_avg
 
-#fst_dictionary = Make_fst_dictionary("PracticeFstData_OneGene.csv")
-#Get_fst("MER", "MAH", fst_dictionary)
+fst_dictionary = Make_fst_dictionary("PracticeFstData_OneGene.csv")
+Get_fst("MER", "MAH", fst_dictionary)
 
