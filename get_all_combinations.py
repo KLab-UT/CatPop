@@ -10,7 +10,8 @@ def get_combinations(individuals):
     for combination in combinations:
         FA = list(combination)
         SA = list(set(individuals) - set(FA))
-
+        FA.sort()
+        SA.sort()
         if len(FA) == 6:
             # Create a new list to hold the FA and SA pairs for this combination
             current_pairs = []

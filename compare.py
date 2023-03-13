@@ -12,10 +12,21 @@ class Compare:
         self.pair = (a, b)
         self.key = None
         self.fst = None
-    def strip_sort(self):
-        self.strip()
-        
-    def __eq__(self, c2):
+    def Get_ab(self, ab):
+        ab = ab.lower()
+        if ab == "a":
+            return self.pair[0]
+        if ab == "b":
+            return self.pair[1]
+        else:
+            return "ERROR! Get_ab has invalid arguement"
+    def Compare_sort(self):
+        a = self.pair[0]
+        b = self.pair[1]
+        a.sort(reverse=True)
+        b.sort(reverse=True)
+
+    def Is_duplicate(self, c2):
         if self.pair[0] == c2.pair[0] and self.pair[1] == c2.pair[1]:
             return True
         if self.pair[0] == c2.pair[1] and self.pair[1] == c2.pair[0]:
