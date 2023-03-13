@@ -2,7 +2,7 @@
 def Make_fst_dictionary(file_name):
     fst_list = []
     fst_dict = {}
-    with open(file_name, "r") as fst_d:
+ :   with open(file_name, "r") as fst_d:
         lines = fst_d.readlines()
         for line in lines:
             fst_list.append(line)
@@ -45,6 +45,6 @@ def Diff_fst_avg(list_a, list_b, fst_dict): # get fst of populations in differen
     fst_avg = fst_sum/36
     return fst_avg
 
-fst_dictionary = Make_fst_dictionary("PracticeFstData_OneGene.csv")
-Get_fst("MER", "MAH", fst_dictionary)
+#fst_dictionary = Make_fst_dictionary("PracticeFstData_OneGene.csv")
+#Get_fst("MER", "MAH", fst_dictionary)
 
