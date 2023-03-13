@@ -34,20 +34,20 @@ def makeDict(filename):
     
 print("suuuu dude")
 
-mDict = makeDict("PracticeFstData_OneGene.csv")
-mKeys = compare.same_diff(get_combinations(indv), mDict)
-found = 0
-total = 0
-print(len(mKeys))
-print(len(mDict))
-print(mKeys)
-for mkey in mKeys:
-    if mkey.key in mDict:
-        found +=1
-    else:
-        print(mkey)
-
-print(found)
+# mDict = makeDict("PracticeFstData_OneGene.csv")
+# mKeys = compare.format_compares(get_combinations(indv), mDict)
+# found = 0
+# total = 0
+# print(len(mKeys))
+# print(len(mDict))
+# print(mKeys)
+# for mkey in mKeys:
+#     if mkey.key in mDict:
+#         found +=1
+#     else:
+#         print(mkey)
+# 
+# print(found)
 
 
 
