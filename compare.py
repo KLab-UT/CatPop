@@ -2,9 +2,9 @@
 (to store thr fst value)
 , the == operatater is overridden so that (POP1, POP2) = (POP2, POP1). The class includes the getKey function which 
 generates a valid fst key for a compare and assigns the compare fst (self.fst) to the appropriate value from the given fst dictionary
-compare.py also contains the functions; getCompares, which return a list of all possible compares (one population to another) in the given list of populations
-combine_lists, which add two lists of populations together, and same_diff which formates compares by creating compare objects and calling getKey, then returns any 
-unique comparisons found in the combined list that are not in the uncombined lists'''
+compare.py also contains the functions; getCompares, which returns a list of all possible compares (one population to another) in the given list of populations
+combine_lists, which add two lists of populations together, format_compares which formats compares by creating compare objects and calling getKey, then returns any 
+unique comparisons found in the combined list that are not in the uncombined lists, and avg_fst which takes a list of compares and returns the average fst'''
 
 
 class Compare:
@@ -36,13 +36,16 @@ class Compare:
     def Get_pair(self):
         return (str(self.pair[0]), str(self.pair[1]))
     
+    def getKey(self):
+        return self.key
+    
+    def getFst(self):
+        return float(self.fst)
     
     #generates valid fst key for given compare and assigns the compare fst (self.fst) to the appropriate value from the dictionary
-    def getKey(self, mDict):
+    def makeKey(self, mDict):
         key1 = ("Fst_" + str(self.pair[0]) + "_" + str(self.pair[1]))
         key2 = ("Fst_" + str(self.pair[1]) + "_" + str(self.pair[0]))
-        print(key1)
-        print(key2)
         if key1 in mDict:
             self.key = key1
             self.fst = mDict[key1]
@@ -53,9 +56,6 @@ class Compare:
             print("Error! key not found ")
         return self
 
-# Creates a list of Class Compare objects that represent all possible pairwise
-# comparisons of elements in the input list. This list can be used to compare
-# elements in the input list using __eq__ method of the Compare Class
 # return a list of all possible compares (one population to another) in A
 
 def getCompares(A):
@@ -86,31 +86,31 @@ def combine_lists(A, B):
 #Takes a dictionary with {["Fst_POP1_POP2"]:[fst]} and assigns each compare with its correst key and fst value by calling th makeKey function
 #returns a list of unique (diff) compares 
 
-def same_diff(A, mDict):
-    #print(A)
-    unique = []
-    same = 0
-    diff = 0
+def format_compares(A, mDict):
+    same = []
+    diff = []
     #for j in range(len(A)): # get rid of this if you just want to do one pair (66 comparisons)
         # A[j] is each pair of 12 choose 6
     possible = combine_lists(A[0][0], A[0][1])
     comps = getCompares(possible)
-    #print("comps length", len(comps))
-    keys = []
     for i in comps:
-        keys.append(i.getKey(mDict))
-        if i in getCompares(A[0][0]) or i in getCompares(A[0][1]): 
-            print(i.pair)
-            print(A[0][0])
-            print(A[0][1])
-        if i in getCompares(A[0][0]) or i in getCompares(A[0][1]):
-            same +=1
+        i.makeKey(mDict)
+        left = getCompares(A[0][0])
+        right = getCompares(A[0][1])
+        if i in left or i in right:
+            same.append(i)
         else:
-            diff +=1
-            unique.append(i)
-    print("Total unique: ", len(unique))
-    return (unique)
+            diff.append(i)
+    return (same, diff)
             
-    
+            
+def avg_fst(compares):
+    total = 0.0
+    print(compares)
+    for compare in compares:
+        fst = compare.getFst()
+        total += fst
+    avg = total/len(compares)
+    return avg
 
 
