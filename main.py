@@ -33,8 +33,15 @@ for i in duplicates:
     fst_dictionary = cfa.Make_fst_dictionary("PracticeFstData_OneGene.csv")
     same_fst_averages.append(cfa.Same_fst_avg(i[0], i[1], fst_dictionary)) 
     diff_fst_averages.append(cfa.Diff_fst_avg(i[0], i[1], fst_dictionary)) 
-#same_fst_averages = round(same_fst_averages, 3)
-#diff_fst_averages = round(diff_fst_averages, 3)
+
+#Rounding float values down to 3 decimal places before printing
+for count, f in enumerate(same_fst_averages):
+    f = round(f, 3)
+    same_fst_averages[count] = f
+for count, f in enumerate(same_fst_averages):
+    f = round(f, 3)
+    same_fst_averages[count] = f
+
 print("Same: ", same_fst_averages)
 print("Different: ", diff_fst_averages) 
 

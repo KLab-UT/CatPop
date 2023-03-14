@@ -2,7 +2,7 @@
 def Make_fst_dictionary(file_name):
     fst_list = []
     fst_dict = {}
- :   with open(file_name, "r") as fst_d:
+    with open(file_name, "r") as fst_d:
         lines = fst_d.readlines()
         for line in lines:
             fst_list.append(line)
