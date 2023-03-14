@@ -40,9 +40,10 @@ for count, f in enumerate(same_fst_averages):
     same_fst_averages[count] = f
 for count, f in enumerate(same_fst_averages):
     f = round(f, 3)
-    same_fst_averages[count] = f
+    diff_fst_averages[count] = f
 
 print("Same: ", same_fst_averages)
+print("\n")
 print("Different: ", diff_fst_averages) 
 
 #print(compare.same_diff(get_combinations(indv)))
