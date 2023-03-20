@@ -23,7 +23,6 @@ def get_combinations(individuals):
     return fa_sa_pairs
 
 
-##TODO parse input file into dictionary
 def makeDict(filename):
     with open(filename, 'r') as f:
         keys = f.readline().strip().split(",")
@@ -31,9 +30,8 @@ def makeDict(filename):
         values = f.readline().strip().split(",")
         mDict = dict(zip(keys, values))
         return dict(zip(keys, values))
-    
-    
-print("suuuu dude")
+
+
 
 # mDict = makeDict("PracticeFstData_OneGene.csv")
 # mKeys = compare.format_compares(get_combinations(indv), mDict)
@@ -47,7 +45,7 @@ print("suuuu dude")
 #         found +=1
 #     else:
 #         print(mkey)
-# 
+#
 # print(found)
 
 
@@ -55,10 +53,3 @@ print("suuuu dude")
 # for i, pair in enumerate(fa_sa_pairs):
 #     print(f"Pair {i}: {pair}")
 
-
-# Next step (while in for loop): from all pairwise comparisons,
-# determine which pairs are "same" and which are "diff" based on
-# which set they are in (FA or SA). "Same" comparisons will be those
-# that are in the same set with each other. "Diff" comparisons will not be in the same set.
-# One approach: look in FA set for both names. If they both do OR don't
-# appear there, you know its the same! If only one appears, you know its a "diff" comparison
