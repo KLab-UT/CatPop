@@ -4,7 +4,7 @@
 generates a valid fst key for a compare and assigns the compare fst (self.fst) to the appropriate value from the given fst dictionary
 compare.py also contains the functions; getCompares, which returns a list of all possible compares (one population to another) in the given list of populations
 combine_lists, which add two lists of populations together, format_compares which formats compares by creating compare objects and calling getKey, then returns any 
-unique comparisons found in the combined list that are not in the uncombined lists, and avg_fst which takes a list of compares and returns the average fst'''
+unique comparisons found in the combined list that are not in the uncombined lists, and avg_fst which takes a list of compares and returns the average fst '''
 
 
 class Compare:
@@ -12,24 +12,18 @@ class Compare:
         self.pair = (a, b)
         self.key = None
         self.fst = None
-    def Get_ab(self, ab):
-        ab = ab.lower()
-        if ab == "a":
-            return self.pair[0]
-        if ab == "b":
-            return self.pair[1]
-        else:
-            return "ERROR! Get_ab has invalid arguement"
-    def Compare_sort(self):
-        a = self.pair[0]
-        b = self.pair[1]
-        a.sort(reverse=True)
-        b.sort(reverse=True)
-
-    def Is_duplicate(self, c2):
+    def strip_sort(self):
+        self.strip()
+        
+    def __eq__(self, c2):
         if self.pair[0] == c2.pair[0] and self.pair[1] == c2.pair[1]:
             return True
-        if self.pair[0] == c2.pair[1] and self.pair[1] == c2.pair[0]:
+        elif self.pair[0] == c2.pair[1] and self.pair[1] == c2.pair[0]:
+            return True
+        return False
+    #4 dante
+    def Is_duplicate(self, c2):
+        if self == c2:
             return True
         return False
 
@@ -53,7 +47,7 @@ class Compare:
             self.key = key2
             self.fst = mDict[key2]
         else:
-            print("Error! key not found ")
+            print("Error!, ", key1, "and", key2, "not found ")
         return self
 
 # return a list of all possible compares (one population to another) in A
@@ -83,30 +77,31 @@ def combine_lists(A, B):
 # these pairs are same or diff, and prints total number of unique pairs with
 # diff values.
 #Tracks the number of unique comparisons possible within the separate lists (same) and between the two lists (diff)
-#Takes a dictionary with {["Fst_POP1_POP2"]:[fst]} and assigns each compare with its correst key and fst value by calling th makeKey function
-#returns a list of unique (diff) compares 
+#Takes a dictionary with {["Fst_POP1_POP2"]:[fst]} and assigns each compare with its correst key and fst value by calling the makeKey function
+#returns a lists of (same, diff) compares
 
 def format_compares(A, mDict):
-    same = []
-    diff = []
-    #for j in range(len(A)): # get rid of this if you just want to do one pair (66 comparisons)
-        # A[j] is each pair of 12 choose 6
-    possible = combine_lists(A[0][0], A[0][1])
-    comps = getCompares(possible)
-    for i in comps:
-        i.makeKey(mDict)
-        left = getCompares(A[0][0])
-        right = getCompares(A[0][1])
-        if i in left or i in right:
-            same.append(i)
-        else:
-            diff.append(i)
-    return (same, diff)
+    total_same = {}
+    total_diff = {}
+    for j in range(len(A)): # get rid of this if you just want to do one pair (66 comparisons) # A[j] is each pair of 12 choose 6
+        same = []
+        diff = []
+        left = getCompares(A[j][0])
+        right = getCompares(A[j][1])
+        possible_compares = getCompares(combine_lists(A[j][0], A[j][1]))
+        for i in possible_compares:
+            i.makeKey(mDict)
+            if i in left or i in right:
+                same.append(i)
+            else:
+                diff.append(i)
+        total_same[j] = same
+        total_diff[j] = diff
+    return (total_same, total_diff)
             
             
 def avg_fst(compares):
     total = 0.0
-    print(compares)
     for compare in compares:
         fst = compare.getFst()
         total += fst
@@ -114,3 +109,11 @@ def avg_fst(compares):
     return avg
 
 
+
+
+
+
+#TODO
+def get_averages(same, diff):
+
+    pass
