@@ -19,26 +19,6 @@ class Populations:
         elif self.pair[0] == c2.pair[1] and self.pair[1] == c2.pair[0]:
             return True
         return False
-    #todo remove duplicates 
-    def remove_duplicates(self, c2):
-        if self == c2:
-            return True
-        return False
-    
-        duplicates = gac.get_combinations(indv)
-        #print(duplicates)
-        print(len(duplicates))
-
-        # Removing duplicates
-        dup_count = 0
-        for count, i in enumerate(duplicates):
-            pair = compare.Compare(i[0], i[1])
-            for j in duplicates[count+1:]:
-                c2 = compare.Compare(j[0], j[1])
-                d = pair.Is_duplicate(c2)
-                if d:
-                    dup_count += 1
-        print(dup_count)
 
     def Get_pair(self):
         return (str(self.pair[0]), str(self.pair[1]))
@@ -64,6 +44,14 @@ class Populations:
         return self
 
 # return a list of all possible compares (one population to another) in A
+
+#TODo remove duplicates 
+def find_duplicates(self, c2):
+    if self == c2:
+        return True
+    return False
+
+
 
 def getCompares(A):
     compares = []
