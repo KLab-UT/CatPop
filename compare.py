@@ -77,8 +77,9 @@ def combine_lists(A, B):
 # these pairs are same or diff, and prints total number of unique pairs with
 # diff values.
 #Tracks the number of unique comparisons possible within the separate lists (same) and between the two lists (diff)
-#Takes a dictionary with {["Fst_POP1_POP2"]:[fst]} and assigns each compare with its correst key and fst value by calling the makeKey function
-#returns a lists of (same, diff) compares
+#Takes a dictionary with {["Fst_POP1_POP2"]:[fst]} and assigns each compare with its correct key and fst value by calling the makeKey function
+#Creates a dictionary for same and different compares 
+#returns dictionaries of (same, diff) compares where the keys are 0--len(A) for each pair of populations in A
 
 def format_compares(A, mDict):
     total_same = {}
@@ -106,14 +107,25 @@ def avg_fst(compares):
         fst = compare.getFst()
         total += fst
     avg = total/len(compares)
-    return avg
+    return round(avg, 4)
 
 
 
 
 
 
-#TODO
-def get_averages(same, diff):
+#TODO, given a dictionary of same and a dictionary of diff compares, return a list of same averages and diff averages of each list of compares in the dictionaries
 
-    pass
+def same_diff_avg(same, diff):
+    same_avgs =[]
+    diff_avgs = []
+    for i in range(len(same)):
+        avg = avg_fst(same[i])
+        same_avgs.append(avg)
+    for i in range(len(diff)):
+        avg = avg_fst(diff[i])
+        diff_avgs.append(avg)
+    return(same_avgs, diff_avgs)
+
+        
+    
