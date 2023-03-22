@@ -38,7 +38,7 @@ for i in duplicates:
 for count, f in enumerate(same_fst_averages):
     f = round(f, 3)
     same_fst_averages[count] = f
-for count, f in enumerate(same_fst_averages):
+for count, f in enumerate(diff_fst_averages):
     f = round(f, 3)
     diff_fst_averages[count] = f
 
