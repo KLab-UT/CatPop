@@ -7,13 +7,11 @@ combine_lists, which add two lists of populations together, format_compares whic
 unique comparisons found in the combined list that are not in the uncombined lists, and avg_fst which takes a list of compares and returns the average fst '''
 
 
-class Compare:
+class Populations:
     def __init__(self, a, b):
         self.pair = (a, b)
         self.key = None
         self.fst = None
-    def strip_sort(self):
-        self.strip()
         
     def __eq__(self, c2):
         if self.pair[0] == c2.pair[0] and self.pair[1] == c2.pair[1]:
@@ -21,11 +19,26 @@ class Compare:
         elif self.pair[0] == c2.pair[1] and self.pair[1] == c2.pair[0]:
             return True
         return False
-    #4 dante
-    def Is_duplicate(self, c2):
+    #todo remove duplicates 
+    def remove_duplicates(self, c2):
         if self == c2:
             return True
         return False
+    
+        duplicates = gac.get_combinations(indv)
+        #print(duplicates)
+        print(len(duplicates))
+
+        # Removing duplicates
+        dup_count = 0
+        for count, i in enumerate(duplicates):
+            pair = compare.Compare(i[0], i[1])
+            for j in duplicates[count+1:]:
+                c2 = compare.Compare(j[0], j[1])
+                d = pair.Is_duplicate(c2)
+                if d:
+                    dup_count += 1
+        print(dup_count)
 
     def Get_pair(self):
         return (str(self.pair[0]), str(self.pair[1]))
@@ -56,7 +69,7 @@ def getCompares(A):
     compares = []
     for i in range(len(A)-1):
         for j in range(i+1, len(A)):
-            c = Compare(A[i], A[j])
+            c = Populations(A[i], A[j])
             compares.append(c)
     return compares
 
