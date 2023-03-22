@@ -12,15 +12,5 @@ print("Same averages: ", avgs[0])
 print("Diff averages: ", avgs[1])
 
 
-# for i in same:
-#     print(i.key)
-#     print(i.fst)
-# print("Same average: ", avg_same)
-#     
-# for i in diff:
-#     print(i.key)
-#     print(i.fst)
-# print("Diff average: ", avg_diff)
-
 
     
