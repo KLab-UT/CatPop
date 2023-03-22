@@ -13,4 +13,8 @@ print("Diff averages: ", avgs[1])
 
 
 
+<<<<<<< HEAD
     
+=======
+    
+>>>>>>> ba9e57e9a2069a73276a84ada33322dfcf2d6d1a
