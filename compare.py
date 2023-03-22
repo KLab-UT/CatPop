@@ -107,7 +107,7 @@ def avg_fst(compares):
         fst = compare.getFst()
         total += fst
     avg = total/len(compares)
-    return round(avg, 4)
+    return round(avg, 3)
 
 
 
