@@ -23,33 +23,39 @@ def get_combinations(individuals):
     return fa_sa_pairs
 
 
-def makeDict(filename):
+def make_dict(filename):
     with open(filename, 'r') as f:
         keys = f.readline().strip().split(",")
         keys = keys[1:]
         values = f.readline().strip().split(",")
         mDict = dict(zip(keys, values))
-        return dict(zip(keys, values))
+        return mDict
 
+# takes a file where each line is population,ecotype and returns a dictionary {ecotype, [populations in that ecotype]}
+def make_true(filename):
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+    pairs = [line.strip().split(',') for line in lines]
+    
+    ecotype_dict = {pair[0]: pair[1] for pair in pairs}
+    ecotype_dict.pop('ï»¿Population')
+    
+    ecotypes = []
+    #get different ecotypes
+    for key in ecotype_dict:
+        if ecotype_dict[key] not in ecotypes:
+            ecotypes.append(ecotype_dict[key])
+            
+    #make true lists
+    true = {}
+    for ecotype in ecotypes:
+        this_ecotype = []
+        for key in ecotype_dict:
+            if ecotype_dict[key] == ecotype:
+                this_ecotype.append(key)
+        true[ecotype] = this_ecotype
 
+    return true
 
-# mDict = makeDict("PracticeFstData_OneGene.csv")
-# mKeys = compare.format_compares(get_combinations(indv), mDict)
-# found = 0
-# total = 0
-# print(len(mKeys))
-# print(len(mDict))
-# print(mKeys)
-# for mkey in mKeys:
-#     if mkey.key in mDict:
-#         found +=1
-#     else:
-#         print(mkey)
-#
-# print(found)
-
-
-
-# for i, pair in enumerate(fa_sa_pairs):
-#     print(f"Pair {i}: {pair}")
+print(make_true("CorrectEcoTypeAssignments.csv"))
 
