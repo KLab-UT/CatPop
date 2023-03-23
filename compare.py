@@ -20,17 +20,17 @@ class Populations:
             return True
         return False
 
-    def Get_pair(self):
+    def get_pair(self):
         return (str(self.pair[0]), str(self.pair[1]))
     
-    def getKey(self):
+    def get_key(self):
         return self.key
     
-    def getFst(self):
+    def get_fst(self):
         return float(self.fst)
     
     #generates valid fst key for given compare and assigns the compare fst (self.fst) to the appropriate value from the dictionary
-    def makeKey(self, mDict):
+    def make_key(self, mDict):
         key1 = ("Fst_" + str(self.pair[0]) + "_" + str(self.pair[1]))
         key2 = ("Fst_" + str(self.pair[1]) + "_" + str(self.pair[0]))
         if key1 in mDict:
@@ -41,7 +41,6 @@ class Populations:
             self.fst = mDict[key2]
         else:
             print("Error!, ", key1, "and", key2, "not found ")
-        return self
 
 # return a list of all possible compares (one population to another) in A
 
@@ -52,8 +51,9 @@ def find_duplicates(self, c2):
     return False
 
 
-
-def getCompares(A):
+#A is and array of populations
+#returns possible combinations of populTIONS 
+def get_populations(A):
     compares = []
     for i in range(len(A)-1):
         for j in range(i+1, len(A)):
@@ -82,17 +82,17 @@ def combine_lists(A, B):
 #Creates a dictionary for same and different compares 
 #returns dictionaries of (same, diff) compares where the keys are 0--len(A) for each pair of populations in A
 
-def format_compares(A, mDict):
+def format_populations(A, mDict):
     total_same = {}
     total_diff = {}
     for j in range(len(A)): # get rid of this if you just want to do one pair (66 comparisons) # A[j] is each pair of 12 choose 6
         same = []
         diff = []
-        left = getCompares(A[j][0])
-        right = getCompares(A[j][1])
-        possible_compares = getCompares(combine_lists(A[j][0], A[j][1]))
+        left = get_populations(A[j][0])
+        right = get_populations(A[j][1])
+        possible_compares = get_populations(combine_lists(A[j][0], A[j][1]))
         for i in possible_compares:
-            i.makeKey(mDict)
+            i.make_key(mDict)
             if i in left or i in right:
                 same.append(i)
             else:
@@ -105,7 +105,7 @@ def format_compares(A, mDict):
 def avg_fst(compares):
     total = 0.0
     for compare in compares:
-        fst = compare.getFst()
+        fst = compare.get_fst()
         total += fst
     avg = total/len(compares)
     return round(avg, 3)
