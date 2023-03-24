@@ -4,7 +4,7 @@ import fst_dict
 
 indv = gac.get_combinations(['MAH','MER','PVM','SUM','STO','CHR','RON','ROC','ELF','NAM','MAR','PAP'])
 mDict = fst_dict.makeDict("PracticeFstData_OneGene.csv")
-true_scenario = compare.format_true_populations(gac.make_true("CorrectEcoTypeAssignments.csv"), mDict)
+true_scenario = compare.format_true_populations(gac.make_true("CorrectEcotypeAssignments.csv"), mDict)
 possible_scenarios = compare.format_populations(indv, mDict)
  
 
