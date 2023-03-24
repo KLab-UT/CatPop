@@ -127,33 +127,35 @@ def avg_fst(compares):
 
 
 
-#TODO, given a list of lists of same and a list of lists of diff populations objects, return a list of same fst averages and diff fst averages for each
-#list of populations objects
+#takes a list of lists of  populations objects, returns a list of fst averages fst for each list of populations objects
 
-def same_diff_avg(same, diff):
-    same_avgs =[]
-    diff_avgs = []
-    for i in same:
+def possible_avgs(poss_populations):
+    avgs = []
+    for i in poss_populations:  
         avg = avg_fst(i)
-        same_avgs.append(avg)
-    for i in diff:
-        avg = avg_fst(i)
-        diff_avgs.append(avg)
-    return(same_avgs, diff_avgs)
+        avgs.append(avg)   
+    return(avgs)
 
 
 
-#takes two lists of averages and returns a list of the difference between corresponding elements
-def delta_fst_average(same_avgs, diff_avgs):
-    if len(same_avgs) == len(diff_avgs):
-        delta_fst_avgs = []
-        for i in range(len(same_avgs)):
-            delta_avg = abs(same_avgs[i] - diff_avgs[i])
-            delta_fst_avgs.append(round(delta_avg,3))
-        return delta_fst_avgs
-    print("Error!")
-    return False
+#takes a list of  and returns a list of the differences between corresponding elements
+def delta_fst_average(poss_populations):
+    same_avgs = possible_avgs(poss_populations[0])
+    diff_avgs = possible_avgs(poss_populations[1])
+    delta_fst_avgs = []
+    for i in range(len(same_avgs)):
+        delta_avg = abs(same_avgs[i] - diff_avgs[i])
+        delta_fst_avgs.append(round(delta_avg,3))
+    return delta_fst_avgs
+
     
+def delta_fst_true(true_scenario):
+    for i in true_scenario[0]:
+        print(i.fst)
+    same_avg = avg_fst(true_scenario[0])
+    diff_avg = avg_fst(true_scenario[1])
+    delta_fst = round(abs(same_avg - diff_avg), 3)
+    return delta_fst
     
 
 
