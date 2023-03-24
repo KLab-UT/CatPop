@@ -5,35 +5,21 @@ import fst_dict
 
 indv = gac.get_combinations(['MAH','MER','PVM','SUM','STO','CHR','RON','ROC','ELF','NAM','MAR','PAP'])
 mDict = fst_dict.makeDict("PracticeFstData_OneGene.csv")
-compares = compare.format_populations(indv, mDict)
+possible_scenarios = compare.format_populations(indv, mDict)
 
-avgs = compare.same_diff_avg(compares[0], compares[1])
-same_avgs = avgs[0]
-diff_avgs = avgs[1]
-print("Same averages: ", same_avgs)
-print("Diff averages: ", same_avgs)
+possible_avgs = compare.same_diff_avg(possible_scenarios[0], possible_scenarios[1])
+pos_same_avgs = possible_avgs[0]
+pos_diff_avgs = possible_avgs[1]
 
-
+true = gac.make_true("CorrectEcoTypeAssignments.csv")
+true_scenario = compare.format_true_populations(true, mDict)
+true_same_avg = compare.avg_fst(true_scenario[0])
+true_diff_avg = compare.avg_fst(true_scenario[1])
+ 
 
 #p-value
 
-delta_fst = []
-for i in range(len(same_avgs)):
-    delta_fst.append(round(abs(same_avgs[i] - diff_avgs[i]), 4))
-print("Delta fst: ", delta_fst)
-
-
-# duplicates = gac.get_combinations(indv)
-# #print(duplicates)
-# print(len(duplicates))
-# 
-# # Removing duplicates
-# dup_count = 0
-# for count, i in enumerate(duplicates):
-#     pair = compare.Compare(i[0], i[1])
-#     for j in duplicates[count+1:]:
-#         c2 = compare.Compare(j[0], j[1])
-#         d = pair.Is_duplicate(c2)
-#         if d:
-#             dup_count += 1
-# print(dup_count)
+true_delta_fst = abs(true_same_avg - true_diff_avg)
+pos_delta_fst = compare.delta_fst_average(pos_same_avgs, pos_diff_avgs)
+print("possible Delta fsts: ", pos_delta_fst)
+print("True delata fst: " , true_delta_fst)

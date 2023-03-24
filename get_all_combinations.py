@@ -47,15 +47,15 @@ def make_true(filename):
             ecotypes.append(ecotype_dict[key])
             
     #make true lists
-    true = {}
+    true_lists = []
     for ecotype in ecotypes:
         this_ecotype = []
         for key in ecotype_dict:
             if ecotype_dict[key] == ecotype:
                 this_ecotype.append(key)
-        true[ecotype] = this_ecotype
+        true_lists.append(this_ecotype)
 
-    return true
+    return (true_lists)
 
 print(make_true("CorrectEcoTypeAssignments.csv"))
 

@@ -73,18 +73,14 @@ def combine_lists(A, B):
         combined.append(b)
     return combined #the new, combinded list
 
-# Takes a list of pairs of values 'A', anc creates a list of all pairwise
-# comparisons of the elements in the first two pairs of values, checks which of
-# these pairs are same or diff, and prints total number of unique pairs with
-# diff values.
-#Tracks the number of unique comparisons possible within the separate lists (same) and between the two lists (diff)
+# Takes a list of pairs of lists of populations and creates a list of all pairwise
+# comparisons of the elements in each two pairs of populations, creates populations objects for each population to population comparison
 #Takes a dictionary with {["Fst_POP1_POP2"]:[fst]} and assigns each compare with its correct key and fst value by calling the makeKey function
-#Creates a dictionary for same and different compares 
 #returns dictionaries of (same, diff) compares where the keys are 0--len(A) for each pair of populations in A
 
-def format_populations(A, mDict):
-    total_same = {}
-    total_diff = {}
+def format_populations(A, fst_dict):
+    total_same = []
+    total_diff = []
     for j in range(len(A)): # get rid of this if you just want to do one pair (66 comparisons) # A[j] is each pair of 12 choose 6
         same = []
         diff = []
@@ -92,18 +88,34 @@ def format_populations(A, mDict):
         right = get_populations(A[j][1])
         possible_compares = get_populations(combine_lists(A[j][0], A[j][1]))
         for i in possible_compares:
-            i.make_key(mDict)
+            i.make_key(fst_dict)
             if i in left or i in right:
                 same.append(i)
             else:
                 diff.append(i)
-        total_same[j] = same
-        total_diff[j] = diff
+        total_same.append(same)
+        total_diff.append(diff)
     return (total_same, total_diff)
+
+def format_true_populations(true_lists, fst_dict):
+    same = []
+    diff = []
+    true_1 = get_populations(true_lists[0])
+    true_2 = get_populations(true_lists[1])
+    possible_compares = get_populations(combine_lists(true_lists[0], true_lists[1]))
+    for i in possible_compares:
+        i.make_key(fst_dict)
+        if i in true_1 or i in true_2:
+            same.append(i)
+        else: diff.append(i)
+    return(same, diff)
+    
+   
             
             
 def avg_fst(compares):
     total = 0.0
+    
     for compare in compares:
         fst = compare.get_fst()
         total += fst
@@ -115,18 +127,39 @@ def avg_fst(compares):
 
 
 
-#TODO, given a dictionary of same and a dictionary of diff compares, return a list of same averages and diff averages of each list of compares in the dictionaries
+#TODO, given a list of lists of same and a list of lists of diff populations objects, return a list of same fst averages and diff fst averages for each
+#list of populations objects
 
 def same_diff_avg(same, diff):
     same_avgs =[]
     diff_avgs = []
-    for i in range(len(same)):
-        avg = avg_fst(same[i])
+    for i in same:
+        avg = avg_fst(i)
         same_avgs.append(avg)
-    for i in range(len(diff)):
-        avg = avg_fst(diff[i])
+    for i in diff:
+        avg = avg_fst(i)
         diff_avgs.append(avg)
     return(same_avgs, diff_avgs)
 
+
+
+#takes two lists of averages and returns a list of the difference between corresponding elements
+def delta_fst_average(same_avgs, diff_avgs):
+    if len(same_avgs) == len(diff_avgs):
+        delta_fst_avgs = []
+        for i in range(len(same_avgs)):
+            delta_avg = abs(same_avgs[i] - diff_avgs[i])
+            delta_fst_avgs.append(round(delta_avg,3))
+        return delta_fst_avgs
+    print("Error!")
+    return False
+    
+    
+
+
+def get_qualifiers(true_delta_fsts, avg_delta_fsts):
+    
+
+    pass
         
     
