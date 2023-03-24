@@ -32,6 +32,7 @@ def make_dict(filename):
         return mDict
 
 # takes a file where each line is population,ecotype and returns a nested lists of seperate ecotypes:
+def make_true(filename):
     with open(filename, 'r') as f:
         lines = f.readlines()
     pairs = [line.strip().split(',') for line in lines]
