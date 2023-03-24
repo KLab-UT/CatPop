@@ -57,5 +57,4 @@ def make_true(filename):
 
     return (true_lists)
 
-print(make_true("CorrectEcoTypeAssignments.csv"))
 

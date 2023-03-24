@@ -150,18 +150,18 @@ def delta_fst_average(poss_populations):
 
     
 def delta_fst_true(true_scenario):
-    for i in true_scenario[0]:
-        print(i.fst)
     same_avg = avg_fst(true_scenario[0])
     diff_avg = avg_fst(true_scenario[1])
     delta_fst = round(abs(same_avg - diff_avg), 3)
     return delta_fst
     
 
-
-def get_qualifiers(true_delta_fsts, avg_delta_fsts):
-    
-
-    pass
+def calculate_p_value(true_delta, poss_deltas):
+    qual = 0.0
+    for i in poss_deltas:
+        if i >= true_delta:
+            qual += 1
+    p = qual/len(poss_deltas)
+    return p
         
     
