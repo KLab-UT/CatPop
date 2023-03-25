@@ -1,6 +1,18 @@
 import itertools
 import compare
-indv = ['MAH','MER','PVM','SUM','STO','CHR','RON','ROC','ELF','NAM','MAR','PAP']
+
+def get_populations(filename):
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+        lines = lines[1:]  #remove top line of text file "Ecotype:Populations"
+        pairs = [line.strip().split(':') for line in lines]
+        
+        populations = [pair[1].strip().split(',') for pair in pairs] #get populations seperate from ecotype
+        p = populations[0]+populations[1] #combine populations insto one list
+        return p
+        
+#indv = ['MAH','MER','PVM','SUM','STO','CHR','RON','ROC','ELF','NAM','MAR','PAP']
+indv = get_populations("Alternative_layout_CEA.csv")
 def get_combinations(individuals):
     # Generate all possible combinations of 6 individuals
     combinations = itertools.combinations(individuals, 6)
