@@ -31,19 +31,6 @@ def get_combinations(individuals):
     
     return fa_sa_pairs
 print ("X: ", len(get_combinations(indv)))
-# # make combinations_list and remove duplicates
-# combinations_list = get_combinations(indv)
-# print(len(combinations_list))
-# def remove_duplicates(combinations_list): #compare c1 to c2 and remove c2 if they're identical
-#     for count, pop_set in enumerate(combinations_list):
-#         ps = compare.Populations(pop_set[0], pop_set[1])
-#         for comparison in combinations_list[count:]:
-#             c = compare.Populations(comparison[0], comparison[1])
-#             if ps == c:
-#                 combinations_list.remove(comparison)
-#                 break
-#     return combinations_list
-# print(len(remove_duplicates(combinations_list)))
 
 def make_dict(filename):
     with open(filename, 'r') as f:
