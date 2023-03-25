@@ -38,7 +38,7 @@ def make_true(filename):
     pairs = [line.strip().split(',') for line in lines]
     
     ecotype_dict = {pair[0]: pair[1] for pair in pairs}
-    ecotype_dict.pop('ï»¿Population')
+    ecotype_dict.pop('Population')
     
     ecotypes = []
     #get different ecotypes
