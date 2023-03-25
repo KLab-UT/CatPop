@@ -23,14 +23,12 @@ def get_combinations(individuals):
     # Remove duplicates in fa_sa_pairs
     for count, pop_set in enumerate(fa_sa_pairs):
         ps = compare.Populations(pop_set[0], pop_set[1])
-        for comparison in fa_sa_pairs[count:]:
+        for comparison in fa_sa_pairs[count+1:]:
             c = compare.Populations(comparison[0], comparison[1])
             if ps == c:
                 fa_sa_pairs.remove(comparison)
-                break    #I'm not sure why break fixes the remove duplicates part
-    
+                
     return fa_sa_pairs
-print ("X: ", len(get_combinations(indv)))
 
 def make_dict(filename):
     with open(filename, 'r') as f:
