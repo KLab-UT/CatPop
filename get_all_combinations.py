@@ -42,10 +42,12 @@ def make_dict(filename):
 def make_true(filename):
     with open(filename, 'r') as f:
         lines = f.readlines()
+        lines = lines[1:]
     pairs = [line.strip().split(',') for line in lines]
     
     ecotype_dict = {pair[0]: pair[1] for pair in pairs}
-    ecotype_dict.pop('Population')
+    print(ecotype_dict)
+    #ecotype_dict.pop('ï»¿Population')
     
     ecotypes = []
     #get different ecotypes
@@ -63,5 +65,4 @@ def make_true(filename):
         true_lists.append(this_ecotype)
 
     return (true_lists)
-
 
