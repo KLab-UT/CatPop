@@ -42,7 +42,7 @@ def make_dict(filename):
 def make_true(filename):
     with open(filename, 'r') as f:
         lines = f.readlines()
-        lines = lines[1:]
+        lines = lines[1:]  #remove top line of text file "Ecotype:Populations"
     pairs = [line.strip().split(',') for line in lines]
     
     ecotype_dict = {pair[0]: pair[1] for pair in pairs}
