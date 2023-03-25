@@ -7,9 +7,9 @@ def Make_fst_dictionary(file_name):
         for line in lines:
             fst_list.append(line)
     population = fst_list[0].split(",")
-    population = population[1:]
+    population = population[1:]  #removes the first thing in the line that is not a population
     fst = fst_list[1].split(",")
-    fst = fst[1:]
+    fst = fst[1:]  #removes the first thing in the line that is not aN FST value
     for i in range(len(population)):
         p = population[i].strip()
         f = fst[i].strip()
