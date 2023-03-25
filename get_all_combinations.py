@@ -31,14 +31,14 @@ def make_dict(filename):
         mDict = dict(zip(keys, values))
         return mDict
 
-# takes a file where each line is population,ecotype and returns a dictionary {ecotype, [populations in that ecotype]}
+# takes a file where each line is population,ecotype and returns a nested lists of seperate ecotypes:
 def make_true(filename):
     with open(filename, 'r') as f:
         lines = f.readlines()
     pairs = [line.strip().split(',') for line in lines]
     
     ecotype_dict = {pair[0]: pair[1] for pair in pairs}
-    ecotype_dict.pop('Population')
+    ecotype_dict.pop('ï»¿Population')
     
     ecotypes = []
     #get different ecotypes
