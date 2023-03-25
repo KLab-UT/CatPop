@@ -20,21 +20,30 @@ def get_combinations(individuals):
             current_pairs.append(SA)
             # Append the current pairs list to the list of pairs for all combinations
             fa_sa_pairs.append(current_pairs)
-    return fa_sa_pairs
-
-# make combinations_list and remove duplicates
-combinations_list = get_combinations(indv)
-print(len(combinations_list))
-def remove_duplicates(combinations_list): #compare c1 to c2 and remove c2 if they're identical
-    for count, pop_set in enumerate(combinations_list):
+    # Remove duplicates in fa_sa_pairs
+    for count, pop_set in enumerate(fa_sa_pairs):
         ps = compare.Populations(pop_set[0], pop_set[1])
-        for comparison in combinations_list[count:]:
+        for comparison in fa_sa_pairs[count:]:
             c = compare.Populations(comparison[0], comparison[1])
             if ps == c:
-                combinations_list.remove(comparison)
-                
-    return combinations_list
-print(len(remove_duplicates(combinations_list)))
+                fa_sa_pairs.remove(comparison)
+                break    #I'm not sure why break fixes the remove duplicates part
+    
+    return fa_sa_pairs
+print ("X: ", len(get_combinations(indv)))
+# # make combinations_list and remove duplicates
+# combinations_list = get_combinations(indv)
+# print(len(combinations_list))
+# def remove_duplicates(combinations_list): #compare c1 to c2 and remove c2 if they're identical
+#     for count, pop_set in enumerate(combinations_list):
+#         ps = compare.Populations(pop_set[0], pop_set[1])
+#         for comparison in combinations_list[count:]:
+#             c = compare.Populations(comparison[0], comparison[1])
+#             if ps == c:
+#                 combinations_list.remove(comparison)
+#                 break
+#     return combinations_list
+# print(len(remove_duplicates(combinations_list)))
 
 def make_dict(filename):
     with open(filename, 'r') as f:
