@@ -1,0 +1,14 @@
+Tutorial for reading and writing files: https://github.com/joaks1/python-file-io
+
+^ Use this tutorial to create a file called "log.txt" that reports information from the script runs (instead of printing them to stdout)
+The log.txt file should be long and boring, and should just include all of the information for each analysis
+
+You should then have another ouptut file called "results.txt" that reports the p-values for significant loci.
+The results.txt file should be short and informative (e.g., for each significant locus [i.e., loci with p-values < 0.05] provide the (1) gene name, (2) true_delta_fst, and (3) p-value)
+
+To do this week:
+Check that your true_delta_fst is correct (you can just check this by hand)
+Get the analysis to work with a file that contains many loci
+Create the log.txt and results.txt files
+Add doc strings to the scripts
+Start creating the documentation
