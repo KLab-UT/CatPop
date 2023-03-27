@@ -1,18 +1,53 @@
-'''A Compare object represents a possible comparison between two populations and has the attributes pair(POP1, POP2), key (for the fst dictionary), and fst 
+'''A Population object represents a possible comparison between two populations and has the attributes pair(POP1, POP2), key (for the fst dictionary), and fst
 (to store thr fst value)
-, the == operatater is overridden so that (POP1, POP2) = (POP2, POP1). The class includes the getKey function which 
+, the == operatater is overridden so that (POP1, POP2) = (POP2, POP1). The class includes the getKey function which
 generates a valid fst key for a compare and assigns the compare fst (self.fst) to the appropriate value from the given fst dictionary
 compare.py also contains the functions; getCompares, which returns a list of all possible compares (one population to another) in the given list of populations
-combine_lists, which add two lists of populations together, format_compares which formats compares by creating compare objects and calling getKey, then returns any 
+combine_lists, which add two lists of populations together, format_compares which formats compares by creating compare objects and calling getKey, then returns any
 unique comparisons found in the combined list that are not in the uncombined lists, and avg_fst which takes a list of compares and returns the average fst '''
 
 
 class Populations:
-    def __init__(self, a, b):
-        self.pair = (a, b)
+    '''
+    A class to represent the two populations being compared.
+
+    ...
+
+    Attributes
+    ----------
+    pair : tuple
+        Initializes the populations being paired (pop1,pop2)
+
+    key :
+
+    fst : int
+        The value previously calculated that is associated with the populations
+
+    Methods
+    -------
+    __eq__(c2)
+        Initates c2 as population object, and checks if first object and
+        second are the same.
+
+    get_pair()
+        Returns pair of populations
+
+    get_key()
+        Returns key
+
+    get_fst()
+        Returns fst as float
+
+    make_key()
+        Generates valid fst key, and assigns the compare fst (self.fst) to the appropriate value from the dictionary
+
+    '''
+
+    def __init__(self, pop1, pop2):
+        self.pair = (pop1, pop2)
         self.key = None
         self.fst = None
-        
+
     def __eq__(self, c2):
         if self.pair[0] == c2.pair[0] and self.pair[1] == c2.pair[1]:
             return True
@@ -22,14 +57,13 @@ class Populations:
 
     def get_pair(self):
         return (str(self.pair[0]), str(self.pair[1]))
-    
+
     def get_key(self):
         return self.key
-    
+
     def get_fst(self):
         return float(self.fst)
-    
-    #generates valid fst key for given compare and assigns the compare fst (self.fst) to the appropriate value from the dictionary
+
     def make_key(self, mDict):
         key1 = ("Fst_" + str(self.pair[0]) + "_" + str(self.pair[1]))
         key2 = ("Fst_" + str(self.pair[1]) + "_" + str(self.pair[0]))
@@ -42,18 +76,19 @@ class Populations:
         else:
             print("Error!, ", key1, "and", key2, "not found ")
 
-# return a list of all possible compares (one population to another) in A
 
-#TODo remove duplicates 
 def find_duplicates(self, c2):
+    '''Determines if first object and second object are same, returns bool'''
     if self == c2:
         return True
     return False
 
 
-#A is and array of populations
-#returns possible combinations of populTIONS 
 def get_populations(A):
+    '''
+    Takes in A (array of pops.) and returns possible
+    combinations of populations
+    '''
     compares = []
     for i in range(len(A)-1):
         for j in range(i+1, len(A)):
@@ -62,10 +97,13 @@ def get_populations(A):
     return compares
 
 
-# Combines list A and B by appending all elements to combined, in the order in
-# which they appear in the input lists.
 
 def combine_lists(A, B):
+    '''
+    Combines list A and B by appending all elements to combined, in the order in
+    which they appear in the input lists and returns the new, combined list..
+    '''
+
     combined = []
     for a in A:
         combined.append(a)
@@ -109,13 +147,13 @@ def format_true_populations(true_lists, fst_dict):
             same.append(i)
         else: diff.append(i)
     return(same, diff)
-    
-   
-            
-            
+
+
+
+
 def avg_fst(compares):
     total = 0.0
-    
+
     for compare in compares:
         fst = compare.get_fst()
         total += fst
@@ -126,20 +164,25 @@ def avg_fst(compares):
 
 
 
-
-#takes a list of lists of  populations objects, returns a list of fst averages fst for each list of populations objects
-
 def possible_avgs(poss_populations):
+    '''
+    Takes a list of lists of  populations objects, returns a list of fst
+    averages fst for each list of populations objects
+    '''
     avgs = []
-    for i in poss_populations:  
+    for i in poss_populations:
         avg = avg_fst(i)
-        avgs.append(avg)   
+        avgs.append(avg)
     return(avgs)
 
 
 
-#takes a list of  and returns a list of the differences between corresponding elements
 def delta_fst_average(poss_populations):
+    '''
+    Takes a list of  and returns a list of the differences between
+    corresponding elements
+    '''
+
     same_avgs = possible_avgs(poss_populations[0])
     diff_avgs = possible_avgs(poss_populations[1])
     delta_fst_avgs = []
@@ -148,13 +191,13 @@ def delta_fst_average(poss_populations):
         delta_fst_avgs.append(round(delta_avg,3))
     return delta_fst_avgs
 
-    
+
 def delta_fst_true(true_scenario):
     same_avg = avg_fst(true_scenario[0])
     diff_avg = avg_fst(true_scenario[1])
     delta_fst = round(abs(same_avg - diff_avg), 3)
     return delta_fst
-    
+
 
 def calculate_p_value(true_delta, poss_deltas):
     qual = 0.0
@@ -163,5 +206,5 @@ def calculate_p_value(true_delta, poss_deltas):
             qual += 1
     p = qual/len(poss_deltas)
     return p
-        
-    
+
+
