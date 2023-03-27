@@ -12,3 +12,8 @@ Get the analysis to work with a file that contains many loci
 Create the log.txt and results.txt files
 Add doc strings to the scripts
 Start creating the documentation
+
+
+
+P.S. Here is a fun tutorial for using the python debugging library:
+https://github.com/joaks1/python-debugging
