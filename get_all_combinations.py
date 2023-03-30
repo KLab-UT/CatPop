@@ -78,6 +78,9 @@ def make_true(filename):
     ecotype_dict = {pair[0]: pair[1] for pair in pairs}
     print(ecotype_dict)
     indv = ecotype_dict.keys()
+    indv_list = []
+    for key in indv:
+        indv_list.append(key)
     #ecotype_dict.pop('ï»¿Population')
 
     ecotypes = []
@@ -95,5 +98,5 @@ def make_true(filename):
                 this_ecotype.append(key)
         true_lists.append(this_ecotype)
 
-    return (true_lists, indv)
+    return (true_lists)
 

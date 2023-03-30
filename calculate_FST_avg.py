@@ -1,50 +1,76 @@
-#make fst file into dictionary
-def Make_fst_dictionary(file_name):
-    fst_list = []
-    fst_dict = {}
-    with open(file_name, "r") as fst_d:
-        lines = fst_d.readlines()
-        for line in lines:
-            fst_list.append(line)
-    population = fst_list[0].split(",")
-    population = population[1:]  #removes the first thing in the line that is not a population
-    fst = fst_list[1].split(",")
-    fst = fst[1:]  #removes the first thing in the line that is not aN FST value
-    for i in range(len(population)):
-        p = population[i].strip()
-        f = fst[i].strip()
-        fst_dict[p] = f
-    return fst_dict
-#Dictionary to get fst values from compared populations
-def Get_fst(a, b, fst_dict): #a and b are 2 different populations being compared
-    key1 = "Fst_"+a+"_"+b
-    key2 = "Fst_"+b+"_"+a
-    if key1 in fst_dict:
-        fst = fst_dict[key1]
-    if key2 in fst_dict:
-        fst = fst_dict[key2]
-    return fst
+import compare
+import get_all_combinations as gac
+def avg_fst(compares):
+    total = 0.0
 
-#Get average FST for same and different
-def Same_fst_avg(list_a, list_b, fst_dict): #use twice for list A and list B
-    fst_sum = 0.0
-    lists = [list_a, list_b]
-    for li in lists:
-        for count, i in enumerate(li):
-            for j in li[count+1:]:
-                fst = Get_fst(i, j, fst_dict)
-                fst_sum += float(fst)
-    fst_avg = fst_sum/30
-    return fst_avg
-def Diff_fst_avg(list_a, list_b, fst_dict): # get fst of populations in different lists
-    fst_sum = 0.0
-    for i in list_a:
-        for j in list_b:
-            fst = Get_fst(i, j, fst_dict)
-            fst_sum += float(fst)
-    fst_avg = fst_sum/36
-    return fst_avg
+    for populations in compares:
+        fst = populations.get_fst()
+        total += fst
+    avg = total/len(compares)
+    return round(avg, 3)
 
-#fst_dictionary = Make_fst_dictionary("PracticeFstData_OneGene.csv")
-#Get_fst("MER", "MAH", fst_dictionary)
+def possible_avgs(poss_populations):
+    '''
+    Takes a list of lists of  populations objects, returns a list of fst
+    averages fst for each list of populations objects
+    '''
+    avgs = []
+    for i in poss_populations:
+        avg = avg_fst(i)
+        avgs.append(avg)
+    return(avgs)
 
+def delta_fst_average(poss_populations):
+    '''
+    Takes a list of  and returns a list of the differences between
+    corresponding elements
+    '''
+
+    same_avgs = possible_avgs(poss_populations[0])
+    diff_avgs = possible_avgs(poss_populations[1])
+    delta_fst_avgs = []
+    for i in range(len(same_avgs)):
+        delta_avg = abs(same_avgs[i] - diff_avgs[i])
+        delta_fst_avgs.append(round(delta_avg,3))
+    return delta_fst_avgs
+
+def delta_fst_true(true_scenario):
+    same_avg = avg_fst(true_scenario[0])
+    diff_avg = avg_fst(true_scenario[1])
+    delta_fst = round(abs(same_avg - diff_avg), 3)
+    return delta_fst
+
+def calculate_p_value(true_delta, poss_deltas):
+    qual = 0.0
+    for i in poss_deltas:
+        if i >= true_delta:
+            qual += 1
+    p = qual/len(poss_deltas)
+    return p
+
+
+def identify_significant_loci(dictdict):
+    print(dictdict)
+    gene_list = dictdict.keys()
+    genes = []
+    for key in gene_list:
+        genes.append(key)
+    
+    print("genes: ", genes)
+    true_lists = gac.make_true("CorrectEcotypeAssignments.csv")
+    indv = compare.combine_lists(true_lists[0], true_lists[1])
+    combinations = gac.get_combinations(indv)
+    
+    for gene in genes:
+        true_scenario = compare.format_true_populations(true_lists, dictdict[gene])
+        true_delta_fst = compare.delta_fst_true(true_scenario)
+
+
+        possible_scenarios = compare.format_populations(combinations, dictdict[gene])
+        poss_delta_fsts = delta_fst_average(possible_scenarios)
+        p_value = calculate_p_value(true_delta_fst, poss_delta_fsts)
+        print("p-value: ", p_value)
+        
+        
+        
+        

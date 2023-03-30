@@ -74,6 +74,7 @@ class Populations:
             self.key = key2
             self.fst = mDict[key2]
         else:
+            print(mDict)
             print("Error!, ", key1, "and", key2, "not found ")
 
 
