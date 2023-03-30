@@ -1,5 +1,6 @@
 import compare
 import get_all_combinations as gac
+import geneID_dict
 def avg_fst(compares):
     total = 0.0
     if len(compares) > 0:
@@ -50,13 +51,14 @@ def calculate_p_value(true_delta, poss_deltas):
     return p
 
 
-def identify_significant_loci(dictdict):
+def identify_significant_loci(gene_file, ecotype_file):
+    dictdict = geneID_dict.make_dict_dict(gene_file)
     gene_list = dictdict.keys()
     genes = []
     for key in gene_list:
         genes.append(key)
     
-    true_lists = gac.make_true("CorrectEcotypeAssignments.csv")
+    true_lists = gac.make_true(ecotype_file)
     indv = compare.combine_lists(true_lists[0], true_lists[1])
     combinations = gac.get_combinations(indv)
     
