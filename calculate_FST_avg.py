@@ -56,7 +56,6 @@ def identify_significant_loci(dictdict):
     for key in gene_list:
         genes.append(key)
     
-    print("genes: ", genes)
     true_lists = gac.make_true("CorrectEcotypeAssignments.csv")
     indv = compare.combine_lists(true_lists[0], true_lists[1])
     combinations = gac.get_combinations(indv)
@@ -69,6 +68,7 @@ def identify_significant_loci(dictdict):
         possible_scenarios = compare.format_populations(combinations, dictdict[gene])
         poss_delta_fsts = delta_fst_average(possible_scenarios)
         p_value = calculate_p_value(true_delta_fst, poss_delta_fsts)
+        print(gene)
         print("p-value: ", p_value)
         
         
