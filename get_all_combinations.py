@@ -6,11 +6,11 @@ def get_populations(filename):
         lines = f.readlines()
         lines = lines[1:]  #remove top line of text file "Ecotype:Populations"
         pairs = [line.strip().split(':') for line in lines]
-        
+
         populations = [pair[1].strip().split(',') for pair in pairs] #get populations seperate from ecotype
         p = populations[0]+populations[1] #combine populations insto one list
         return p
-        
+
 #indv = ['MAH','MER','PVM','SUM','STO','CHR','RON','ROC','ELF','NAM','MAR','PAP']
 indv = get_populations("Alternative_layout_CEA.csv")
 def get_combinations(individuals):
@@ -39,7 +39,7 @@ def get_combinations(individuals):
             c = compare.Populations(comparison[0], comparison[1])
             if ps == c:
                 fa_sa_pairs.remove(comparison)
-                
+
     return fa_sa_pairs
 
 def make_dict(filename):
@@ -50,23 +50,40 @@ def make_dict(filename):
         mDict = dict(zip(keys, values))
         return mDict
 
+
+
+
+def make_dict_dict(filename):
+    f=open(filename, "r")
+    first=f.readline()
+    popComb=first.strip().split(",")[1:]
+    for line in f:
+        geneID=line.strip().split(",")[:1]
+        fsts=line.strip().split(",")[1:]
+        dict_popComb={popComb[0]:fsts[0]}
+        for i in range(1,len(popComb)):
+            dict_popComb[popComb[i]]=fsts[i]
+        dict_geneID={geneID[0]:dict_popComb}
+        print(dict_geneID)
+    return dict_geneID
+
 # takes a file where each line is population,ecotype and returns a nested lists of seperate ecotypes:
 def make_true(filename):
     with open(filename, 'r') as f:
         lines = f.readlines()
         lines = lines[1:]  #remove top line of text file "Ecotype:Populations"
     pairs = [line.strip().split(',') for line in lines]
-    
+
     ecotype_dict = {pair[0]: pair[1] for pair in pairs}
     print(ecotype_dict)
     #ecotype_dict.pop('ï»¿Population')
-    
+
     ecotypes = []
     #get different ecotypes
     for key in ecotype_dict:
         if ecotype_dict[key] not in ecotypes:
             ecotypes.append(ecotype_dict[key])
-            
+
     #make true lists
     true_lists = []
     for ecotype in ecotypes:
