@@ -12,7 +12,7 @@ def get_populations(filename):
         return p
 
 #indv = ['MAH','MER','PVM','SUM','STO','CHR','RON','ROC','ELF','NAM','MAR','PAP']
-indv = get_populations("Alternative_layout_CEA.csv")
+#indv = get_populations("Alternative_layout_CEA.csv")
 def get_combinations(individuals):
     # Generate all possible combinations of 6 individuals
     combinations = itertools.combinations(individuals, 6)
@@ -57,15 +57,16 @@ def make_dict_dict(filename):
     f=open(filename, "r")
     first=f.readline()
     popComb=first.strip().split(",")[1:]
+    dd = {}
     for line in f:
         geneID=line.strip().split(",")[:1]
         fsts=line.strip().split(",")[1:]
         dict_popComb={popComb[0]:fsts[0]}
         for i in range(1,len(popComb)):
             dict_popComb[popComb[i]]=fsts[i]
-        dict_geneID={geneID[0]:dict_popComb}
-        print(dict_geneID)
-    return dict_geneID
+        dd[geneID[0]] = dict_popComb
+        
+    return dd
 
 # takes a file where each line is population,ecotype and returns a nested lists of seperate ecotypes:
 def make_true(filename):
@@ -76,6 +77,7 @@ def make_true(filename):
 
     ecotype_dict = {pair[0]: pair[1] for pair in pairs}
     print(ecotype_dict)
+    indv = ecotype_dict.keys()
     #ecotype_dict.pop('ï»¿Population')
 
     ecotypes = []
@@ -93,5 +95,5 @@ def make_true(filename):
                 this_ecotype.append(key)
         true_lists.append(this_ecotype)
 
-    return (true_lists)
+    return (true_lists, indv)
 
