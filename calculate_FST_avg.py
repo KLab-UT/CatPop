@@ -2,12 +2,13 @@ import compare
 import get_all_combinations as gac
 def avg_fst(compares):
     total = 0.0
-
-    for populations in compares:
-        fst = populations.get_fst()
-        total += fst
-    avg = total/len(compares)
-    return round(avg, 3)
+    if len(compares) > 0:
+        for populations in compares:
+            fst = populations.get_fst()
+            total += fst
+        avg = total/len(compares)
+        return round(avg, 3)
+    return total
 
 def possible_avgs(poss_populations):
     '''
@@ -50,7 +51,6 @@ def calculate_p_value(true_delta, poss_deltas):
 
 
 def identify_significant_loci(dictdict):
-    print(dictdict)
     gene_list = dictdict.keys()
     genes = []
     for key in gene_list:
@@ -62,13 +62,15 @@ def identify_significant_loci(dictdict):
     
     for gene in genes:
         true_scenario = compare.format_true_populations(true_lists, dictdict[gene])
-        true_delta_fst = compare.delta_fst_true(true_scenario)
+        true_delta_fst = delta_fst_true(true_scenario)
 
 
         possible_scenarios = compare.format_populations(combinations, dictdict[gene])
         poss_delta_fsts = delta_fst_average(possible_scenarios)
         p_value = calculate_p_value(true_delta_fst, poss_delta_fsts)
         print(gene)
+        print("True delta fst: ", true_delta_fst)
+        print("Possible delta fsts: ", poss_delta_fsts)
         print("p-value: ", p_value)
         
         

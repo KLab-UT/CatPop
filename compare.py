@@ -70,13 +70,21 @@ class Populations:
         if key1 in mDict:
             self.key = key1
             self.fst = mDict[key1]
+
+            
         elif key2 in mDict:
             self.key = key2
             self.fst = mDict[key2]
+
         else:
             print(mDict)
             print("Error!, ", key1, "and", key2, "not found ")
 
+def is_float(string):
+    if string.replace(".", "").isnumeric():
+        return True
+    else:
+        return False
 
 def find_duplicates(self, c2):
     '''Determines if first object and second object are same, returns bool'''
@@ -128,10 +136,11 @@ def format_populations(A, fst_dict):
         possible_compares = get_populations(combine_lists(A[j][0], A[j][1]))
         for i in possible_compares:
             i.make_key(fst_dict)
-            if i in left or i in right:
-                same.append(i)
-            else:
-                diff.append(i)
+            if is_float(i.fst):
+                if i in left or i in right:
+                    same.append(i)
+                else:
+                    diff.append(i)
         total_same.append(same)
         total_diff.append(diff)
     return (total_same, total_diff)
@@ -144,68 +153,11 @@ def format_true_populations(true_lists, fst_dict):
     possible_compares = get_populations(combine_lists(true_lists[0], true_lists[1]))
     for i in possible_compares:
         i.make_key(fst_dict)
-        if i in true_1 or i in true_2:
-            same.append(i)
-        else: diff.append(i)
+        if is_float(i.fst):
+            if i in true_1 or i in true_2:
+                same.append(i)
+            else: diff.append(i)
     return(same, diff)
 
-
-
-
-def avg_fst(compares):
-    total = 0.0
-
-    for compare in compares:
-        fst = compare.get_fst()
-        total += fst
-    avg = total/len(compares)
-    return round(avg, 3)
-
-
-
-
-
-def possible_avgs(poss_populations):
-    '''
-    Takes a list of lists of  populations objects, returns a list of fst
-    averages fst for each list of populations objects
-    '''
-    avgs = []
-    for i in poss_populations:
-        avg = avg_fst(i)
-        avgs.append(avg)
-    return(avgs)
-
-
-
-def delta_fst_average(poss_populations):
-    '''
-    Takes a list of  and returns a list of the differences between
-    corresponding elements
-    '''
-
-    same_avgs = possible_avgs(poss_populations[0])
-    diff_avgs = possible_avgs(poss_populations[1])
-    delta_fst_avgs = []
-    for i in range(len(same_avgs)):
-        delta_avg = abs(same_avgs[i] - diff_avgs[i])
-        delta_fst_avgs.append(round(delta_avg,3))
-    return delta_fst_avgs
-
-
-def delta_fst_true(true_scenario):
-    same_avg = avg_fst(true_scenario[0])
-    diff_avg = avg_fst(true_scenario[1])
-    delta_fst = round(abs(same_avg - diff_avg), 3)
-    return delta_fst
-
-
-def calculate_p_value(true_delta, poss_deltas):
-    qual = 0.0
-    for i in poss_deltas:
-        if i >= true_delta:
-            qual += 1
-    p = qual/len(poss_deltas)
-    return p
 
 
