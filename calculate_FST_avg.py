@@ -52,9 +52,13 @@ def calculate_p_value(true_delta, poss_deltas):
 
 
 def identify_significant_loci(gene_file, ecotype_file):
+    log = open('log.txt', 'w')
+    results = open('results.txt', 'w')
+    
     dictdict = geneID_dict.make_dict_dict(gene_file)
     gene_list = dictdict.keys()
     genes = []
+    
     for key in gene_list:
         genes.append(key)
     
@@ -65,16 +69,27 @@ def identify_significant_loci(gene_file, ecotype_file):
     for gene in genes:
         true_scenario = compare.format_true_populations(true_lists, dictdict[gene])
         true_delta_fst = delta_fst_true(true_scenario)
-
-
         possible_scenarios = compare.format_populations(combinations, dictdict[gene])
         poss_delta_fsts = delta_fst_average(possible_scenarios)
         p_value = calculate_p_value(true_delta_fst, poss_delta_fsts)
-        print(gene)
-        print("True delta fst: ", true_delta_fst)
-        print("Possible delta fsts: ", poss_delta_fsts)
-        print("p-value: ", p_value)
+        this_gene = track_gene(gene, true_delta_fst, p_value, poss_delta_fsts)
         
-        
+        for value in this_gene:
+            log.write('{0}\n'.format(value))
+        if p_value <= 0.05:
+            this_gene = this_gene[:3]
+            for value in this_gene:
+                results.write('{0}\n'.format(value))
+    log.close()
+    results.close()
+
+def track_gene(gene, true_delta_fst, p_value, poss_delta_fsts):
+    this_gene = []
+    this_gene.append(gene)
+    this_gene.append("True delta fst: " + str(true_delta_fst))
+    this_gene.append("p-value: " + str(p_value))
+    this_gene.append("Possible delta fsts: " + str(poss_delta_fsts))
+    return this_gene
+
         
         

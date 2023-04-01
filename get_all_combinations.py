@@ -76,12 +76,11 @@ def make_true(filename):
     pairs = [line.strip().split(',') for line in lines]
 
     ecotype_dict = {pair[0]: pair[1] for pair in pairs}
-    print(ecotype_dict)
+
     indv = ecotype_dict.keys()
     indv_list = []
     for key in indv:
         indv_list.append(key)
-    #ecotype_dict.pop('ï»¿Population')
 
     ecotypes = []
     #get different ecotypes
