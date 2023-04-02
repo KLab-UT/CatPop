@@ -18,10 +18,11 @@ class Populations:
     pair : tuple
         Initializes the populations being paired (pop1,pop2)
 
-    key :
+    key : int
+        The value associated with the population comparisons
 
     fst : int
-        The value previously calculated that is associated with the populations
+        A spot for storing the actual fst value
 
     Methods
     -------
@@ -44,11 +45,13 @@ class Populations:
     '''
 
     def __init__(self, pop1, pop2):
+        '''Initializes population being paired'''
         self.pair = (pop1, pop2)
         self.key = None
         self.fst = None
 
     def __eq__(self, c2):
+        '''Returns bool if objects are mirror images'''
         if self.pair[0] == c2.pair[0] and self.pair[1] == c2.pair[1]:
             return True
         elif self.pair[0] == c2.pair[1] and self.pair[1] == c2.pair[0]:
@@ -56,6 +59,7 @@ class Populations:
         return False
 
     def get_pair(self):
+        '''Returns pair of populations'''
         return (str(self.pair[0]), str(self.pair[1]))
 
     def get_key(self):
@@ -65,13 +69,14 @@ class Populations:
         return float(self.fst)
 
     def make_key(self, mDict):
+        '''Generates valid Fst key, and assigns appropriate value to the dictionary'''
         key1 = ("Fst_" + str(self.pair[0]) + "_" + str(self.pair[1]))
         key2 = ("Fst_" + str(self.pair[1]) + "_" + str(self.pair[0]))
         if key1 in mDict:
             self.key = key1
             self.fst = mDict[key1]
 
-            
+
         elif key2 in mDict:
             self.key = key2
             self.fst = mDict[key2]
@@ -81,6 +86,7 @@ class Populations:
             print("Error!, ", key1, "and", key2, "not found ")
 
 def is_float(string):
+    '''Returns bool indicateting whether parameter is a float'''
     if string.replace(".", "").isnumeric():
         return True
     else:
@@ -118,17 +124,17 @@ def combine_lists(A, B):
         combined.append(a)
     for b in B:
         combined.append(b)
-    return combined #the new, combinded list
+    return combined
 
-# Takes a list of pairs of lists of populations and creates a list of all pairwise
-# comparisons of the elements in each two pairs of populations, creates populations objects for each population to population comparison
 #Takes a dictionary with {["Fst_POP1_POP2"]:[fst]} and assigns each compare with its correct key and fst value by calling the makeKey function
 #returns dictionaries of (same, diff) compares where the keys are 0--len(A) for each pair of populations in A
 
 def format_populations(A, fst_dict):
+    ''' Takes in dictionary of {Populations:Fst} and assigns with correct key
+    and fst values. Returns dictionaries of (same,diff).'''
     total_same = []
     total_diff = []
-    for j in range(len(A)): # get rid of this if you just want to do one pair (66 comparisons) # A[j] is each pair of 12 choose 6
+    for j in range(len(A)): # delete this if you just want to do one pair (66 comparisons) # A[j] is each pair of 12 choose 6
         same = []
         diff = []
         left = get_populations(A[j][0])
@@ -146,6 +152,10 @@ def format_populations(A, fst_dict):
     return (total_same, total_diff)
 
 def format_true_populations(true_lists, fst_dict):
+    '''Takes in two lists of pops and dictionary of Fst values. Generates all
+    possible pairwise comparisons between pops in two lists, creates and append
+    the object to either same or diff list depending on whether it belongs to
+    same population or not.'''
     same = []
     diff = []
     true_1 = get_populations(true_lists[0])
