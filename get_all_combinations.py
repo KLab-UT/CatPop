@@ -48,6 +48,7 @@ def make_dict(filename):
         keys = keys[1:]
         values = f.readline().strip().split(",")
         mDict = dict(zip(keys, values))
+        f.close()
         return mDict
 
 
@@ -65,7 +66,7 @@ def make_dict_dict(filename):
         for i in range(1,len(popComb)):
             dict_popComb[popComb[i]]=fsts[i]
         dd[geneID[0]] = dict_popComb
-        
+    f.close()
     return dd
 
 # takes a file where each line is population,ecotype and returns a nested lists of seperate ecotypes:
@@ -96,6 +97,6 @@ def make_true(filename):
             if ecotype_dict[key] == ecotype:
                 this_ecotype.append(key)
         true_lists.append(this_ecotype)
-
+    f.close()
     return (true_lists)
 

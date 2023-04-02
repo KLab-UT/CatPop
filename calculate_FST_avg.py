@@ -32,14 +32,14 @@ def delta_fst_average(poss_populations):
     diff_avgs = possible_avgs(poss_populations[1])
     delta_fst_avgs = []
     for i in range(len(same_avgs)):
-        delta_avg = abs(same_avgs[i] - diff_avgs[i])
-        delta_fst_avgs.append(round(delta_avg,3))
+        delta_avg = round(abs(same_avgs[i] - diff_avgs[i]),3)
+        delta_fst_avgs.append(delta_avg)
     return delta_fst_avgs
 
 def delta_fst_true(true_scenario):
     same_avg = avg_fst(true_scenario[0])
     diff_avg = avg_fst(true_scenario[1])
-    delta_fst = round(abs(same_avg - diff_avg), 3)
+    delta_fst = round(abs(same_avg - diff_avg),3)
     return delta_fst
 
 def calculate_p_value(true_delta, poss_deltas):
@@ -65,7 +65,7 @@ def identify_significant_loci(gene_file, ecotype_file):
     true_lists = gac.make_true(ecotype_file)
     indv = compare.combine_lists(true_lists[0], true_lists[1])
     combinations = gac.get_combinations(indv)
-    
+    print('Thinking...')
     for gene in genes:
         true_scenario = compare.format_true_populations(true_lists, dictdict[gene])
         true_delta_fst = delta_fst_true(true_scenario)
@@ -77,11 +77,12 @@ def identify_significant_loci(gene_file, ecotype_file):
         for value in this_gene:
             log.write('{0}\n'.format(value))
         if p_value <= 0.05:
-            this_gene = this_gene[:3]
+            this_gene.pop(3)
             for value in this_gene:
-                results.write('{0}\n'.format(value))
+                results.write('{0}\n'.format(value))            
     log.close()
     results.close()
+    print("Finished! See results.txt and log.txt")
 
 def track_gene(gene, true_delta_fst, p_value, poss_delta_fsts):
     this_gene = []
@@ -89,6 +90,7 @@ def track_gene(gene, true_delta_fst, p_value, poss_delta_fsts):
     this_gene.append("True delta fst: " + str(true_delta_fst))
     this_gene.append("p-value: " + str(p_value))
     this_gene.append("Possible delta fsts: " + str(poss_delta_fsts))
+    this_gene.append("\n")
     return this_gene
 
         
