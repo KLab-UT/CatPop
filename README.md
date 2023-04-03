@@ -1,5 +1,4 @@
 # GarterSnakeCombinatorics
-Using a permutation test and combinatorics to test for differences in population structure between ecotypes of western terrestrial garter snake.
 
 This software package uses combinatorics to create all possible scenarios of two
 population assignments, performs a permutation test for each comparison, and
