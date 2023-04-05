@@ -55,6 +55,9 @@ def identify_significant_loci(gene_file, ecotype_file):
     log = open('log.txt', 'w')
     results = open('results.txt', 'w')
     
+    output = open('output.csv' , 'w')
+    output.write('Gene ID, P-value \n')
+    
     dictdict = geneID_dict.make_dict_dict(gene_file)
     gene_list = dictdict.keys()
     genes = []
@@ -79,10 +82,13 @@ def identify_significant_loci(gene_file, ecotype_file):
         if p_value <= 0.05:
             this_gene.pop(3)
             for value in this_gene:
-                results.write('{0}\n'.format(value))            
+                results.write('{0}\n'.format(value))
+            line = gene + ',' + str(p_value) + '\n'
+            output.write(line)
     log.close()
     results.close()
-    print("Finished! See results.txt and log.txt")
+    output.close()
+    print("Finished! See output.csv, results.txt, and log.txt")
 
 def track_gene(gene, true_delta_fst, p_value, poss_delta_fsts):
     this_gene = []
