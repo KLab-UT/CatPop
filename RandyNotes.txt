@@ -1,3 +1,12 @@
+To do this week (3 April 2023):
+Create conceptual figure: Vicente and Kasia
+Create random data: Baylee, Reagan, Dante, Candice
+Create the code diagram showing data flow (for methods): Reagan
+Create density plot of p-values from results (see create_density_plot.r): Dante and Candice
+Begin creating dot plot of Fst values showing delta fst (only for true scenario): Dante and Candice (Wait for Randy to give sample code)
+Begin creating biological application figure (gene names, snake images): Baylee
+Start poster file (Google slides): Baylee
+
 Tutorial for reading and writing files: https://github.com/joaks1/python-file-io
 
 ^ Use this tutorial to create a file called "log.txt" that reports information from the script runs (instead of printing them to stdout)
