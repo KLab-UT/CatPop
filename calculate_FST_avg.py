@@ -43,7 +43,7 @@ def delta_fst_true(true_scenario):
     return delta_fst
 
 def calculate_p_value(true_delta, poss_deltas):
-    qual = 0.0
+    qual = 1.0 #numerator always at least 1 because of true delta
     for i in poss_deltas:
         if i >= true_delta:
             qual += 1
