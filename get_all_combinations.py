@@ -15,12 +15,12 @@ def get_populations(filename):
 
 #indv = ['MAH','MER','PVM','SUM','STO','CHR','RON','ROC','ELF','NAM','MAR','PAP']
 #indv = get_populations("Alternative_layout_CEA.csv")
-def get_combinations(individuals):
+def get_combinations(individuals, length):
     '''Takes list of individuals as input, generates all possible combinations
     of 6 individuals from given list. Then creates pairs of those
     combinations and removes duplicates'''
-    # Generate all possible combinations of 6 individuals
-    combinations = itertools.combinations(individuals, 6)
+    # Generate all possible combinations of length individuals
+    combinations = itertools.combinations(individuals, length)
 
     fa_sa_pairs = []
     # Assign the remaining individuals to the second group
@@ -29,7 +29,7 @@ def get_combinations(individuals):
         SA = list(set(individuals) - set(FA))
         FA.sort()
         SA.sort()
-        if len(FA) == 6:
+        if len(FA) == length:
             # Create a new list to hold the FA and SA pairs for this combination
             current_pairs = []
             # Append the FA and SA lists to the current pairs list

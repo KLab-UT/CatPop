@@ -87,7 +87,7 @@ class Populations:
 
 def is_float(string):
     '''Returns bool indicateting whether parameter is a float'''
-    if string.replace(".", "").isnumeric():
+    if string.replace(".", "").replace("-","").isnumeric():
         return True
     else:
         return False
@@ -147,6 +147,9 @@ def format_populations(A, fst_dict):
                     same.append(i)
                 else:
                     diff.append(i)
+#             else:
+#                 print(fst_dict)
+#                 print("Error! Fst for ", i.key, " not found")
         total_same.append(same)
         total_diff.append(diff)
     return (total_same, total_diff)

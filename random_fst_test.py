@@ -4,7 +4,7 @@ def generate_random_numbers(amount):
     i = 0
     rand = ""
     while i < amount:
-        rand = rand + str(random.uniform(0, 1.0)) + ","
+        rand = rand + str(round(random.uniform(0, 1.0), 3)) + ","
         i += 1
     return rand
 
