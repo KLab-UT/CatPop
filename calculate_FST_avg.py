@@ -59,17 +59,12 @@ def identify_significant_loci(gene_file, ecotype_file):
     output.write('Gene ID, P-value \n')
     
     dictdict = geneID_dict.make_dict_dict(gene_file)
-    gene_list = dictdict.keys()
-    genes = []
-    
-    for key in gene_list:
-        genes.append(key)
     
     true_lists = gac.make_true(ecotype_file)
     indv = compare.combine_lists(true_lists[0], true_lists[1])
     combinations = gac.get_combinations(indv)
     print('Thinking...')
-    for gene in genes:
+    for gene in dictdict:
         true_scenario = compare.format_true_populations(true_lists, dictdict[gene])
         true_delta_fst = delta_fst_true(true_scenario)
         possible_scenarios = compare.format_populations(combinations, dictdict[gene])
