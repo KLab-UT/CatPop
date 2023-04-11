@@ -68,7 +68,7 @@ def identify_significant_loci(gene_file, ecotype_file):
     results = open('results.txt', 'w')
     
     output = open('output.csv' , 'w')
-    output.write('Gene ID,P-value,Significant,True delta same,True delta diff,\n')
+    output.write('GeneID,P-value,Significant,TrueDeltaSame,TrueDeltaDiff,\n')
     
     dictdict = geneID_dict.make_dict_dict(gene_file)
     
