@@ -3,6 +3,7 @@ __pycache__
 calculate_FST_avg.py
 log.txt
 main.py
-output.csv
+sig_output.csv
+all_output.csv
 random_fst_test.csv
 results.txt
