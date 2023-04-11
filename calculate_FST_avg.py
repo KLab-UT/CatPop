@@ -67,8 +67,10 @@ def identify_significant_loci(gene_file, ecotype_file):
     log = open('log.txt', 'w')
     results = open('results.txt', 'w')
     
-    output = open('output.csv' , 'w')
-    output.write('GeneID,P-value,Significant,TrueDeltaSame,TrueDeltaDiff,\n')
+    sig_output = open('sig_output.csv' , 'w')
+    all_output = open('all_output.csv' , 'w')
+    sig_output.write('GeneID,P-value,Significant,TrueDeltaSame,TrueDeltaDiff,\n')
+    all_output.write('GeneID,P-value,Significant,TrueDeltaSame,TrueDeltaDiff,\n')
     
     dictdict = geneID_dict.make_dict_dict(gene_file)
     
@@ -91,6 +93,7 @@ def identify_significant_loci(gene_file, ecotype_file):
         sig = 0
         for value in this_gene:
             log.write('{0}\n'.format(value))
+        line = gene + ',' + str(p_value) + ',' + str(sig) +','+ str(same_diff_true[0]) +','+ str(same_diff_true[1]) + '\n'
         if p_value <= 0.05:
             sig = 1
 #             this_gene.pop(3)
@@ -99,12 +102,13 @@ def identify_significant_loci(gene_file, ecotype_file):
         
             for value in this_gene:
                 results.write('{0}\n'.format(value))
-            line = gene + ',' + str(p_value) + ',' + str(sig) +','+ str(same_diff_true[0]) +','+ str(same_diff_true[1]) + '\n'
-            output.write(line)
+            sig_output.write(line)
+        all_output.write(line)
     log.close()
     results.close()
-    output.close()
-    print("Finished! See output.csv, results.txt, and log.txt")
+    sig_output.close()
+    all_output.close()
+    print("Finished! See sig_output.csv, all_output.csv, results.txt, and log.txt")
 
 def track_gene(gene, true_delta_fst, p, poss_delta_fsts):
     this_gene = []
