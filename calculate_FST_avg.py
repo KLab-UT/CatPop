@@ -103,7 +103,9 @@ def identify_significant_loci(gene_file, ecotype_file):
             for value in this_gene:
                 results.write('{0}\n'.format(value))
             sig_output.write(line)
-        all_output.write(line)
+            all_output.write(line)
+        else:
+            all_output.write(line)
     log.close()
     results.close()
     sig_output.close()
