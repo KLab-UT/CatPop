@@ -95,16 +95,19 @@ def identify_significant_loci(gene_file, ecotype_file):
             log.write('{0}\n'.format(value))
         line = gene + ',' + str(p_value) + ',' + str(sig) +','+ str(same_diff_true[0]) +','+ str(same_diff_true[1]) + '\n'
         if p_value <= 0.05:
+            print("found")
             sig = "yes" 
 #             this_gene.pop(3)
 #             this_gene.pop(4)
 #             this_gene.pop()
+            line = gene + ',' + str(p_value) + ',' + str(sig) +','+ str(same_diff_true[0]) +','+ str(same_diff_true[1]) + '\n'
         
             for value in this_gene:
                 results.write('{0}\n'.format(value))
             sig_output.write(line)
             all_output.write(line)
         else:
+            line = gene + ',' + str(p_value) + ',' + str(sig) +','+ str(same_diff_true[0]) +','+ str(same_diff_true[1]) + '\n'
             all_output.write(line)
     log.close()
     results.close()
