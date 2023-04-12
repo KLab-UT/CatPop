@@ -90,12 +90,12 @@ def identify_significant_loci(gene_file, ecotype_file):
         p = calculate_p_value(true_delta_fst, poss_delta_fsts)
         this_gene = track_gene(gene, true_delta_fst, p, poss_delta_fsts)
         p_value = p[0]
-        sig = 0
+        sig = "no" 
         for value in this_gene:
             log.write('{0}\n'.format(value))
         line = gene + ',' + str(p_value) + ',' + str(sig) +','+ str(same_diff_true[0]) +','+ str(same_diff_true[1]) + '\n'
         if p_value <= 0.05:
-            sig = 1
+            sig = "yes" 
 #             this_gene.pop(3)
 #             this_gene.pop(4)
 #             this_gene.pop()
