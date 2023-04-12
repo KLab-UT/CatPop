@@ -27,4 +27,4 @@ def make_fst_file(length, number_of_genes):
             rft.write("\ngene_"+ i + "," + fsts)
 
 # make_fst_file(length_of_populations_list)
-make_fst_file(8, 547)
+make_fst_file(8, 10000)
