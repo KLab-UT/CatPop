@@ -36,7 +36,7 @@ fst_exons_Plot <- dat_melted %>%
   geom_boxplot(lwd=1, fatten=2, outlier.shape=NA, aes(colour="black"), show.legend = F, alpha=0) +
   geom_line(size=1, aes(group=GeneID, linetype=Significant, colour = Significant, alpha=Significant), position = position_dodge(0.2), show.legend = F) +
   scale_linetype_manual(values=c("no" = "dotted","yes" = "solid")) +
-  scale_color_manual(values=c("no" = "#4B4B4B", "yes" = "#56a86d")) + #32707a  #2fb5b1
+  scale_color_manual(values=c("no" = "#4B4B4B", "yes" = "#e6b002")) + 
   geom_point(aes(fill=variable,group=GeneID,colour=factor(Significant), alpha=Significant), position = position_dodge(0.2), size = 3, show.legend = F) +
   scale_x_discrete(labels=c("Within", "Between")) +
   xlab('Comparison Type') + ylab('fst') + # geom_text(aes(label=GeneID), size = 2) +
