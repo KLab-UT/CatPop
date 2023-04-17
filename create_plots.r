@@ -16,10 +16,10 @@ dat$P.value
 library(ggplot2)
 
 # plot your data! Assign the plot to a variable called 'density_plot'
-density_plot_random = ggplot(dat, aes(x=P.value)) + geom_vline(xintercept=0.05, linetype="dashed", size = 1, color = "#F68A8A") + geom_histogram(color="black" , fill="white", bins=50)
+density_plot = ggplot(dat, aes(x=P.value)) + geom_vline(xintercept=0.05, linetype="dashed", size = 1, color = "#F68A8A") + geom_histogram(color="black" , fill="white", bins=50)
 # check out your plot and save it write your plot to a file:
 pdf("density_plot.pdf")
-density_plot_random
+density_plot
 dev.off()
 
 # For this section you will use a few other R packages
@@ -30,9 +30,9 @@ dat_melted <- reshape2::melt(dat, id.vars = c("GeneID", "P.value", "Significant"
 dat_melted$ordered_var <- with(dat_melted, relevel(variable, "TrueDeltaSame"))
 dat_melted <- dat_melted[order(dat_melted$Significant),]
 
-fst_exons_Plot_random <- dat_melted %>%
+fst_exons_Plot <- dat_melted %>%
   ggplot(aes(x=ordered_var,y=value), axis.line = element_line(colour = 'black', linewidth= 3)) +
-  theme_classic() +
+  theme_classic(base_size = 25) +
   geom_boxplot(lwd=1, fatten=2, outlier.shape=NA, aes(colour="black"), show.legend = F, alpha=0) +
   geom_line(size=1, aes(group=GeneID, linetype=Significant, colour = Significant, alpha=Significant), position = position_dodge(0.2), show.legend = F) +
   scale_linetype_manual(values=c("no" = "dotted","yes" = "solid")) +
@@ -42,5 +42,4 @@ fst_exons_Plot_random <- dat_melted %>%
   xlab('Comparison Type') + ylab('fst') + # geom_text(aes(label=GeneID), size = 2) +
   geom_hline(yintercept=0.02, linetype="dashed", size = 1, color = "#F68A8A")
   theme(legend.position = "top")
-fst_exons_Plot_random
-
+fst_exons_Plot
