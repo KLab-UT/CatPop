@@ -137,7 +137,7 @@ def track_gene(gene, true_delta_fst, p, poss_delta_fsts):
     This function constructs a list containing various pieces of
     information related to a gene's analysis results, such as the gene
     identifier, true delta fst, p-value, possible delta fsts, qualifiers, and
-    total count. This function is likely used within a larger context to gather
+    total count. This function is used within the larger context to gather
     and organize information about genes during the analysis process.
     '''
     this_gene = []

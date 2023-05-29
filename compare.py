@@ -1,6 +1,5 @@
 '''A Population object represents a possible comparison between two populations and has the attributes pair(POP1, POP2), key (for the fst dictionary), and fst
-(to store thr fst value)
-, the == operatater is overridden so that (POP1, POP2) = (POP2, POP1). The class includes the getKey function which
+(to store thr fst value), the == operator is overridden so that (POP1, POP2) = (POP2, POP1). The class includes the getKey function which
 generates a valid fst key for a compare and assigns the compare fst (self.fst) to the appropriate value from the given fst dictionary
 compare.py also contains the functions; getCompares, which returns a list of all possible compares (one population to another) in the given list of populations
 combine_lists, which add two lists of populations together, format_compares which formats compares by creating compare objects and calling getKey, then returns any
@@ -171,6 +170,3 @@ def format_true_populations(true_lists, fst_dict):
                 same.append(i)
             else: diff.append(i)
     return(same, diff)
-
-
-
