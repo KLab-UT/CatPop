@@ -2,6 +2,11 @@ import compare
 import get_all_combinations as gac
 import geneID_dict
 def avg_fst(compares):
+    '''
+    This function calculates the average value of the "fst" property for a
+    collection of populations and returns the result rounded to three decimal
+    places. If the collection is empty, it returns 0.0
+    '''
     total = 0.0
     if len(compares) > 0:
         for populations in compares:
@@ -27,7 +32,6 @@ def delta_fst_average(poss_populations):
     Takes a list of  and returns a list of the differences between
     corresponding elements
     '''
-
     same_avgs = possible_avgs(poss_populations[0])
     diff_avgs = possible_avgs(poss_populations[1])
     delta_fst_avgs = []
@@ -37,13 +41,14 @@ def delta_fst_average(poss_populations):
     return delta_fst_avgs
 
 def true_fst_same_diff(true_scenario):
-
+    '''Returns the averages of the same and diff scenarios'''
     same_avg = avg_fst(true_scenario[0])
     diff_avg = avg_fst(true_scenario[1])
 
     return (same_avg, diff_avg)
 
 def delta_fst_true(true_scenario):
+    ''' Returns the delta_fst's that are larger than the actual delta_fst'''
     same_avg = avg_fst(true_scenario[0])
     diff_avg = avg_fst(true_scenario[1])
     delta_fst = round(abs(same_avg - diff_avg),3)
@@ -52,34 +57,46 @@ def delta_fst_true(true_scenario):
 
 
 def calculate_p_value(true_delta, poss_deltas):
+    '''
+    This function calculates the p-value by determining the ratio of qualifying
+    elements (elements greater than or equal to true_delta) to the total number
+    of elements in the poss_deltas collection. It also returns the number of
+    qualifying elements and the length of poss_deltas as additional
+    information.
+    '''
     qualifying = []
     qual = 0 #numerator always at least 1 because of true delta
     length = len(poss_deltas)
     for i in poss_deltas:
         if i >= true_delta:
-            qualifying.append(i) 
+            qualifying.append(i)
             qual += 1
     p = qual/length
     return (p, qual, length)
 
 
 def identify_significant_loci(gene_file, ecotype_file):
+    '''
+    This function performs various data processing and analysis tasks to
+    identify significant loci based on genetic and ecotype data. It writes logs
+    and results to files and outputs a completion message when finished.
+    '''
     log = open('log.txt', 'w')
     results = open('results.txt', 'w')
-    
+
     sig_output = open('sig_output.csv' , 'w')
     all_output = open('all_output.csv' , 'w')
     sig_output.write('GeneID,P-value,Significant,TrueDeltaSame,TrueDeltaDiff,\n')
     all_output.write('GeneID,P-value,Significant,TrueDeltaSame,TrueDeltaDiff,\n')
-    
+
     dictdict = geneID_dict.make_dict_dict(gene_file)
-    
+
     true_lists = gac.make_true(ecotype_file)
     indv = compare.combine_lists(true_lists[0], true_lists[1])
     print("indv: ", indv)
     combinations = gac.get_combinations(indv, len(indv)//2)
     print('combinations: ', combinations, "length: ", len(combinations))
-    
+
     print('Thinking...')
     for gene in dictdict:
         true_scenario = compare.format_true_populations(true_lists, dictdict[gene])
@@ -90,18 +107,18 @@ def identify_significant_loci(gene_file, ecotype_file):
         p = calculate_p_value(true_delta_fst, poss_delta_fsts)
         this_gene = track_gene(gene, true_delta_fst, p, poss_delta_fsts)
         p_value = p[0]
-        sig = "no" 
+        sig = "no"
         for value in this_gene:
             log.write('{0}\n'.format(value))
         line = gene + ',' + str(p_value) + ',' + str(sig) +','+ str(same_diff_true[0]) +','+ str(same_diff_true[1]) + '\n'
         if p_value <= 0.05:
             print("found")
-            sig = "yes" 
+            sig = "yes"
 #             this_gene.pop(3)
 #             this_gene.pop(4)
 #             this_gene.pop()
             line = gene + ',' + str(p_value) + ',' + str(sig) +','+ str(same_diff_true[0]) +','+ str(same_diff_true[1]) + '\n'
-        
+
             for value in this_gene:
                 results.write('{0}\n'.format(value))
             sig_output.write(line)
@@ -116,6 +133,13 @@ def identify_significant_loci(gene_file, ecotype_file):
     print("Finished! See sig_output.csv, all_output.csv, results.txt, and log.txt")
 
 def track_gene(gene, true_delta_fst, p, poss_delta_fsts):
+    '''
+    This function constructs a list containing various pieces of
+    information related to a gene's analysis results, such as the gene
+    identifier, true delta fst, p-value, possible delta fsts, qualifiers, and
+    total count. This function is likely used within a larger context to gather
+    and organize information about genes during the analysis process.
+    '''
     this_gene = []
     this_gene.append(gene)
     this_gene.append("True delta fst: " + str(true_delta_fst))
@@ -127,5 +151,5 @@ def track_gene(gene, true_delta_fst, p, poss_delta_fsts):
     #print("this_gene: ", this_gene)
     return this_gene
 
-        
-        
+
+
