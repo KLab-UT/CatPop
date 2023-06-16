@@ -29,8 +29,7 @@ def possible_avgs(poss_populations):
 
 def delta_fst_average(poss_populations):
     '''
-    Takes a list of  and returns a list of the differences between
-    corresponding elements
+    Takes a list of [same, diff] populations objects and returns a list of the avegarge delta fst
     '''
     same_avgs = possible_avgs(poss_populations[0])
     diff_avgs = possible_avgs(poss_populations[1])
