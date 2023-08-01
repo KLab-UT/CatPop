@@ -70,6 +70,8 @@ def calculate_p_value(true_delta, poss_deltas):
         if i >= true_delta:
             qualifying.append(i)
             qual += 1
+        if i == "NA":
+            print("problem")
     p = qual/length
     return (p, qual, length)
 
@@ -89,14 +91,25 @@ def identify_significant_loci(gene_file, ecotype_file):
     all_output.write('GeneID,P-value,Significant,TrueDeltaSame,TrueDeltaDiff,\n')
 
     dictdict = geneID_dict.make_dict_dict(gene_file)
+    log.write("******************************\ndictdict\n*********************************\n")
+    for item in dictdict:
+        log.write("\n\nnew item:\n")
+        log.write(str(item) + "\n")
+        log.write(str(dictdict[item]) + "\n")
 
     true_lists = gac.make_true(ecotype_file)
+    log.write("\n\n\n******************************\ntrue_lists\n*********************************\n")
+    log.write(str(true_lists)+ "\n")
+
     indv = compare.combine_lists(true_lists[0], true_lists[1])
-    print("indv: ", indv)
+    log.write("\n\n\n******************************\nindv\n*********************************\n")
+    log.write("indv: "+ str(indv) + "\n")
     combinations = gac.get_combinations(indv, len(indv)//2)
-    print('combinations: ', combinations, "length: ", len(combinations))
+    log.write("\n\n\n******************************\ncombinations\n*********************************\n")
+    log.write('combinations: '+ str(combinations)+ "\nlength: "+ str(len(combinations)) + "\n")
 
     print('Thinking...')
+    log.write("\n\n\n******************************\npermutation test\n*********************************\n")
     for gene in dictdict:
         true_scenario = compare.format_true_populations(true_lists, dictdict[gene])
         true_delta_fst = delta_fst_true(true_scenario)
@@ -108,10 +121,9 @@ def identify_significant_loci(gene_file, ecotype_file):
         p_value = p[0]
         sig = "no"
         for value in this_gene:
-            log.write('{0}\n'.format(value))
+            log.write('{0}\n'.format(value) + "\n")
         line = gene + ',' + str(p_value) + ',' + str(sig) +','+ str(same_diff_true[0]) +','+ str(same_diff_true[1]) + '\n'
         if p_value <= 0.05:
-            print("found")
             sig = "yes"
 #             this_gene.pop(3)
 #             this_gene.pop(4)
@@ -144,7 +156,7 @@ def track_gene(gene, true_delta_fst, p, poss_delta_fsts):
     this_gene.append("True delta fst: " + str(true_delta_fst))
     this_gene.append("p-value: " + str(p[0]))
     this_gene.append("Possible delta fsts: " + str(poss_delta_fsts))
-    this_gene.append("Qualifiers: " + str(p[1]))
+    this_gene.append("Qualifiers (those with delta fst ≥ true delta fst): " + str(p[1]))
     this_gene.append("Total: " + str(p[2]))
     this_gene.append("\n")
     #print("this_gene: ", this_gene)
