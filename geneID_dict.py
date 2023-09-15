@@ -22,7 +22,7 @@ def make_dict_dict(filename):
     return dict_geneID
 
 with open ('geneID_dictionary.json', 'w') as gd:
-    json.dumps(make_dict_dict("missense_dxy.popgen.csv"))
+    json.dumps(make_dict_dict("Hu_2021_orchids_fst.csv"))
 
 #with open('geneID_dictionary.json') as json_file:
 #    dict_geneID = json.load(json_file)
