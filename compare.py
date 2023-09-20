@@ -85,7 +85,7 @@ class Populations:
             print("Error!, ", key1, "and", key2, "not found ")
 
 def is_float(string):
-    '''Returns bool indicateting whether parameter is a float'''
+    '''Returns bool indicating whether parameter is a float'''
     if string.replace(".", "").replace("-","").isnumeric():
         return True
     else:
@@ -125,8 +125,6 @@ def combine_lists(A, B):
         combined.append(b)
     return combined
 
-#Takes a dictionary with {["Fst_POP1_POP2"]:[fst]} and assigns each compare with its correct key and fst value by calling the makeKey function
-#returns dictionaries of (same, diff) compares where the keys are 0--len(A) for each pair of populations in A
 
 def format_populations(A, fst_dict):
     ''' Takes in dictionary of {Populations:Fst} and assigns with correct key
@@ -152,6 +150,7 @@ def format_populations(A, fst_dict):
         total_same.append(same)
         total_diff.append(diff)
     return (total_same, total_diff)
+    # Returns (same,diff) where keys are 0-len(A) for each pop. pair in A
 
 def format_true_populations(true_lists, fst_dict):
     '''Takes in two lists of pops and dictionary of Fst values. Generates all
@@ -170,3 +169,6 @@ def format_true_populations(true_lists, fst_dict):
                 same.append(i)
             else: diff.append(i)
     return(same, diff)
+
+if __name__ == "__main__":
+    main()

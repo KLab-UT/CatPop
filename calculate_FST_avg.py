@@ -162,5 +162,6 @@ def track_gene(gene, true_delta_fst, p, poss_delta_fsts):
     #print("this_gene: ", this_gene)
     return this_gene
 
-
+if __name__== '__main__':
+    main()
 
