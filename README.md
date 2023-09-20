@@ -11,7 +11,6 @@ There is also a number generator to ensure the accuracy of your data
 * Flow of data and Outputs
 * Instructions to implement your comparisons
 * Other information
-
 # Flow of Data
 
 Please refer to the image below to understand the flow of data through the
@@ -24,7 +23,7 @@ The outputs of this program is as follows:
 * Ecotype comparison of within and between plot
 * results.txt, which will list all the genes and their related p-values
 * log.txt, which will contain all the genes with a p-value below .05
-* sig_output.csv shows the significant genes
+/* sig_output.csv shows the significant genes
 * all_output.csv reports every delta_fst and p-values for the genes
 
 # Instructions to Implement your Comparisons
@@ -50,4 +49,4 @@ python main.py
 # Other Information
 If you get an error saying "Fst_Pop1_Pop2 and Fst_Pop2_Pop1 not found, check your input files and verify that the populations are spelled exactly the same in the fst and ecotype files.
 
-
+# Test 9/19/23
