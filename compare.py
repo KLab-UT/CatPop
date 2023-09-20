@@ -170,5 +170,3 @@ def format_true_populations(true_lists, fst_dict):
             else: diff.append(i)
     return(same, diff)
 
-if __name__ == "__main__":
-    main()
