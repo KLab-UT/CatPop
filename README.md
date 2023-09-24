@@ -43,10 +43,9 @@ the data you'd like to use. (Make sure files are in CatPop directory)
 * open terminal and navigate to CatPop directory
 * type the follwing and review results
 ```
-python main.py
+python main.py <file_with_fst_values> <file_with_category_assignments>
 ```
 
 # Other Information
 If you get an error saying "Fst_Pop1_Pop2 and Fst_Pop2_Pop1 not found, check your input files and verify that the populations are spelled exactly the same in the fst and ecotype files.
 
-# Test 9/19/23
