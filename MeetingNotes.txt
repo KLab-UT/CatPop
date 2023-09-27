@@ -3,6 +3,7 @@ Action plans:
 - Add some error messages
 - Add prefix to output files
 - Update readme to include installation and running instructions (use example file)
+- Randy will start writing the manuscript
 
 
 15 September 2023 (meeting with Randy and Baylee)
