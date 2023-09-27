@@ -7,9 +7,26 @@ import argparse
 parser = argparse.ArgumentParser(description='Run CatPop on selected files')
 parser.add_argument('input_fst_file', help='The input file with the previously calculated fsts, correctly formatted.')
 parser.add_argument('input_category_assignments_file', help='The input file with correctly formatted category assignments')
-
 args = parser.parse_args()
 
+#Need to make this so that it only in one name, like so:
+# python3 main.py -i Hu_2021_orchids
+
+
+# Developing the following method:
+def example_function(x): #deleting later
+    argv = sys.argv[1:]
+    try:
+        opts, args = getopt.getopt(argv, 'i:', ['foperand'])
+        if len(opts) == 0 and len(opts) >1:
+            print("Usage: main.py -i <input_file_prefix>")
+        else:
+            for opt, arg in opts:
+            # Enter script to run here
+
+    except getopt.GetoptError:
+        print("Usage: python3 main.py -i <input_file_prefix>")
+        sys.exit(1)
 
 
 # Allows users to type in names of files in command line
