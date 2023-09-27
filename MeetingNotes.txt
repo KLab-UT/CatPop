@@ -1,3 +1,10 @@
+27 September 2023 (meeting with Randy and Baylee)
+Action plans:
+- Add some error messages
+- Add prefix to output files
+- Update readme to include installation and running instructions (use example file)
+
+
 15 September 2023 (meeting with Randy and Baylee)
 Overall aims for this project:
 1. Implement best practices in python scripting for the package
