@@ -8,6 +8,7 @@ import os
 
 parser = argparse.ArgumentParser(description='Run CatPop on selected files')
 parser.add_argument('--input_prefix', "-i", help='The input file with the previously calculated fsts, correctly formatted.')
+parser.add_argument('--help', '-h', help = "To run CatPop on files, please ensure that your files have the same prefix name, and a suffix of '_fst.csv'and '_categories.csv'."
 args = parser.parse_args()
 
 fst_in = args.input_prefix + "_fst.csv"
