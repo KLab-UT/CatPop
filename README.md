@@ -27,25 +27,22 @@ The outputs of this program is as follows:
 * all_output.csv reports every delta_fst and p-values for the genes
 
 # Instructions to Implement your Comparisons
-Your input file needs to be a csv file, review exons.popgen.csv to ensure you
-have the correct format. The columns need to be labelled accordingly, with the
+This program takes in two files as input. Your input files need a "_categories.csv" and a "_fst.csv" suffix,
+according to their filetype. In your categories file, the columns need to be labelled with the
 underscore between the population names. Comparisons with non-numeric fst values will be ignored.
-
-Assign your True scenarios in CorrectEcotypeAssignments.csv, copying the format.
-
-Edit main.py so that on line 8, the correct names are used in association with
-the data you'd like to use. (Make sure files are in CatPop directory)
+Also, assign your True scenarios in your "categories.csv".
 
 # Running CatPop
 
 
 * install python
 * open terminal and navigate to CatPop directory
-* type the follwing and review results
+* type the following and review results
 ```
-python main.py <file_with_fst_values> <file_with_category_assignments>
+python main.py -i <input_file_prefix>
 ```
-
+* You will see a message when finished that shows you the names of the output
+  files.
 # Other Information
 If you get an error saying "Fst_Pop1_Pop2 and Fst_Pop2_Pop1 not found, check your input files and verify that the populations are spelled exactly the same in the fst and ecotype files.
 
