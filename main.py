@@ -6,18 +6,15 @@ import argparse
 import os
 
 
-parser = argparse.ArgumentParser(description='Run CatPop on selected files')
-parser.add_argument('--input_prefix', "-i", help='The input file with the previously calculated fsts, correctly formatted.')
-parser.add_argument('--help', '-h', help = "To run CatPop on files, please ensure that your files have the same prefix name, and a suffix of '_fst.csv'and '_categories.csv'."
+parser = argparse.ArgumentParser(description='Run CatPop on a category assignment file and a fst file. Generate a prefix for both, and have the \n files be formatted as <inputprefix_fst.csv> and <inputprefix_categories.csv>')
+parser.add_argument('-i', "--input_prefix", help='The prefix of the files you wish to use.')
 args = parser.parse_args()
 
 fst_in = args.input_prefix + "_fst.csv"
 cat_in = args.input_prefix + "_categories.csv"
 
 if not (os.path.exists(fst_in) and os.path.exists(cat_in)):
-    print(f"Error: Input files '{fst_in}' and '{cat_in}' do not exist. Please
-            ensure the files you are attempting to use have a 'categories_csv'
-            and a '_fst.csv' prefix")
+    print(f"Error: Input files '{fst_in}' and '{cat_in}' do not exist")
     sys.exit(1)
 
 # Allows users to type in names of files in command line
@@ -27,6 +24,6 @@ if len(sys.argv) < 2:
 
 
 #rft.make_fst_file(8, 547)
-print('Hello!')
+print('Hello! Your results are being calculated')
 cfa.identify_significant_loci(fst_in, cat_in)
 
