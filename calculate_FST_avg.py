@@ -76,17 +76,17 @@ def calculate_p_value(true_delta, poss_deltas):
     return (p, qual, length)
 
 
-def identify_significant_loci(gene_file, ecotype_file):
+def identify_significant_loci(input_prefix, gene_file, ecotype_file):
     '''
     This function performs various data processing and analysis tasks to
     identify significant loci based on genetic and ecotype data. It writes logs
     and results to files and outputs a completion message when finished.
     '''
-    log = open('log.txt', 'w')
-    results = open('results.txt', 'w')
+    log = open(input_prefix +'_log.txt', 'w')
+    results = open(input_prefix + '_results.txt', 'w')
 
-    sig_output = open('sig_output.csv' , 'w')
-    all_output = open('all_output.csv' , 'w')
+    sig_output = open(input_prefix + '_sig_output.csv' , 'w')
+    all_output = open(input_prefix + '_all_output.csv' , 'w')
     sig_output.write('GeneID,P-value,Significant,TrueDeltaSame,TrueDeltaDiff,\n')
     all_output.write('GeneID,P-value,Significant,TrueDeltaSame,TrueDeltaDiff,\n')
 
@@ -141,7 +141,7 @@ def identify_significant_loci(gene_file, ecotype_file):
     results.close()
     sig_output.close()
     all_output.close()
-    print("Finished! See sig_output.csv, all_output.csv, results.txt, and log.txt")
+    print(f"Finished! See {input_prefix}_sig_output.csv, {input_prefix}_all_output.csv, {input_prefix}_results.txt, and {input_prefix}_log.txt")
 
 def track_gene(gene, true_delta_fst, p, poss_delta_fsts):
     '''
