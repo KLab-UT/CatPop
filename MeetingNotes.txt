@@ -1,3 +1,13 @@
+4 October 2023 (meeting with Randy and Baylee)
+Randy is looking into how to use SLiM to model evolution under expected scenarios (to use for testing CatPop)
+Baylee is updating the readme to include installation and running instructions
+-- Add requirements (python, R [with ggplot2, reshape2, and tidyverse libraries])
+-- Add instructions on cloning
+-- Add basic syntax for running
+-- Add instructions for running random data
+-- Add instructions for getting plot
+-- Include plot figure they should see
+
 27 September 2023 (meeting with Randy and Baylee)
 Action plans:
 - Add some error messages
