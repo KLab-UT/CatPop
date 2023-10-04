@@ -7,6 +7,7 @@ Baylee is updating the readme to include installation and running instructions
 -- Add instructions for running random data
 -- Add instructions for getting plot
 -- Include plot figure they should see
+Also, Baylee is going to work on an updatead abstract for UCUR and send it to me
 
 27 September 2023 (meeting with Randy and Baylee)
 Action plans:
