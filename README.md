@@ -5,20 +5,22 @@ population assignments, performs a permutation test for each comparison, and
 generates a p-value distribution plot, along with graphs that show the association of between/within
 ecotype comparisons, and additionally returns the genes of significance.
 
-There is also a number generator to ensure the accuracy of your data.
+There is also a random number generator to ensure the accuracy of your data.
 
 # Contents
-* Instructions to implement your comparisons
-* Flow of Data and Outputs
-* Other information
+* Program Requirements
+* Instructions
+* Outputs
+* Other Information
+* Flow of Data
 
-# Instructions
 ### Program Requirements
 To get the full usage out of the repository, you will need:
 1. Git
 2. Latest version of Python
 3. R, with the packages ggplot2, reshape2, and tidyverse
 
+# Instructions
 ### Step 1: Cloning the Repository
 1. Ensure you have git installed. Instructions on installing git can be found
 [here](https://git-scm.com/downloads)
@@ -35,7 +37,7 @@ To get the full usage out of the repository, you will need:
    machine in the subdirectory with the same name as the repository. You now
    should navigate into this directory to use functions this repository has.
 
-### Step 2: Implementing file Structure
+### Step 2: Implementing file structure
 1. This program takes in two files as input. Your two files must have a
    particular format.
 2. For the categorical assignment file, please review
@@ -68,7 +70,7 @@ The outputs of this program is as follows:
 * Ecotype comparison of within and between plot
 * results.txt, which will list all the genes and their related p-values
 * log.txt, which will contain all the genes with a p-value below .05
-/* sig_output.csv shows the significant genes
+* sig_output.csv shows the significant genes
 * all_output.csv reports every delta_fst and p-values for the genes
 
 # Other Information
