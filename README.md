@@ -34,6 +34,7 @@ To get the full usage out of the repository, you will need:
 5. Once cloning is complete, you'll have a copy of the repository on your local
    machine in the subdirectory with the same name as the repository. You now
    should navigate into this directory to use functions this repository has.
+
 ### Step 2: Implementing file Structure
 1. This program takes in two files as input. Your two files must have a
    particular format.
@@ -50,7 +51,7 @@ To get the full usage out of the repository, you will need:
 Please Note: comparisons with non-numeric fst values will be ignored.
 Not sure if needed note: Also, assign your True scenarios in your "categories.csv".
 
-# Running CatPop
+### Step 3: Running CatPop
 1. Ensure you have all the program requirements (see above)
 2. Open your terminal and navigate to CatPop directory
 3. Type the following
@@ -60,8 +61,9 @@ python main.py -i <input_file_prefix>
 4. CatPop will notify you the process was initialized, and once finished, you will see a message describing the names of the output
   files.
 
-The outputs of this program is as follows:
+### Outputs
 
+The outputs of this program is as follows:
 * p-value plot
 * Ecotype comparison of within and between plot
 * results.txt, which will list all the genes and their related p-values
