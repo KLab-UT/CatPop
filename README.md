@@ -14,11 +14,13 @@ There is also a random number generator to ensure the accuracy of your data.
 * Other Information
 * Flow of Data
 
-### Program Requirements
+## Program Requirements
 To get the full usage out of the repository, you will need:
 1. Git
 2. Latest version of Python
-3. R, with the packages ggplot2, reshape2, and tidyverse
+3. R, with the packages ggplot2, reshape2, and tidyverse. To install these
+   packages associated with R, enter R and the command to install is:
+   ```install.packages("tidyverse", "ggplot2", "reshape2") ```
 
 # Instructions
 ### Step 1: Cloning the Repository
@@ -63,7 +65,7 @@ python main.py -i <input_file_prefix>
 4. CatPop will notify you the process was initialized, and once finished, you will see a message describing the names of the output
   files.
 
-### Outputs
+## Outputs
 
 The outputs of this program is as follows:
 * p-value plot
@@ -72,6 +74,7 @@ The outputs of this program is as follows:
 * log.txt, which will contain all the genes with a p-value below .05
 * sig_output.csv shows the significant genes
 * all_output.csv reports every delta_fst and p-values for the genes
+* density_plot.pdf, which is #####
 
 # Other Information
 If you get an error saying "Fst_Pop1_Pop2 and Fst_Pop2_Pop1 not found, check your input files and verify that the populations are spelled exactly the same in the fst and ecotype files.
