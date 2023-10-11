@@ -52,7 +52,7 @@ To get the full usage out of the repository, you will need:
    Once again you may label things as you wish, but be consistent with
    formatting. Also, the input file needs to be named
    ```<input_prefix>_fst.csv```
-Please Note: comparisons with non-numeric fst values will be ignored.
+*Please Note: comparisons with non-numeric fst values will be ignored.
 Not sure if needed note: Also, assign your True scenarios in your "categories.csv".
 
 ### Step 3: Running CatPop
@@ -65,16 +65,19 @@ python main.py -i <input_file_prefix>
 4. CatPop will notify you the process was initialized, and once finished, you will see a message describing the names of the output
   files.
 
+### Step 4: Initializing R to get histogram (optional)
+1. Open create_plots.r, and begin following the instructions, pasting each line into your R editor, whether that be your personal command line, RStudio, or something else.
+*Please Note: On line 3,  enter ```<input_prefix_all_output.csv> ```, as this data will be relevant to the generated histogram. On line 21 is where you can name your histogram, and do so as you wish.
+
 ## Outputs
 
 The outputs of this program is as follows:
-* p-value plot
+* p-value plot, which will need to be initilaized through R
 * Ecotype comparison of within and between plot
 * results.txt, which will list all the genes and their related p-values
 * log.txt, which will contain all the genes with a p-value below .05
 * sig_output.csv shows the significant genes
 * all_output.csv reports every delta_fst and p-values for the genes
-* density_plot.pdf, which is #####
 
 # Other Information
 If you get an error saying "Fst_Pop1_Pop2 and Fst_Pop2_Pop1 not found, check your input files and verify that the populations are spelled exactly the same in the fst and ecotype files.

@@ -30,4 +30,5 @@ input_prefix = args.input_prefix
 #rft.make_fst_file(8, 547)
 print('Hello! Your results are being calculated.')
 cfa.identify_significant_loci(input_prefix, fst_in, cat_in)
-
+print('Please see create_plots.r and follow instructions in there to see
+histogram of results.')
