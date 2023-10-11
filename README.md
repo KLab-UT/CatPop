@@ -46,12 +46,13 @@ To get the full usage out of the repository, you will need:
    ```rand_example_categories.csv``` for the proper format assignments. Note that you may label these as you wish,
    but the columns need to be labelled with the underscore between population names.
    A consistent naming convention for you categories will make your results much
-   more undertandable. This input file should be named:
+   more understandable. This input file should be named:
    ```<input_prefix>_categories.csv```
 3. For the format of the fst file, please review ```rand_example_fst.csv```.
    Once again you may label things as you wish, but be consistent with
    formatting. Also, the input file needs to be named
    ```<input_prefix>_fst.csv```
+
 *Please Note: comparisons with non-numeric fst values will be ignored.
 Not sure if needed note: Also, assign your True scenarios in your "categories.csv".
 
