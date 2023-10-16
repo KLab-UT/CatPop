@@ -45,7 +45,9 @@ To get the full usage out of the repository, you will need:
 2. For the categorical assignment file, please review
    ```rand_example_categories.csv``` for the proper format assignments.<br />
    This image has a basic layout:<br />
+   <br />
    ![Image](category_csv_structure.png)<br />
+   <br />
    Note that you may label these as you wish,
    but the columns need to be labelled with the underscore between population names.
    A consistent naming convention for you categories will make your results much
@@ -53,7 +55,9 @@ To get the full usage out of the repository, you will need:
    ```<input_prefix>_categories.csv```
 3. For the format of the fst file, please review ```rand_example_fst.csv```.
    This image shows a basic layout:<br />
+   <br />
    ![Image1](fst_csv_structure.png)<br />
+   <br />
    Once again you may label things as you wish, but be consistent with
    formatting. Also, the input file needs to be named
    ```<input_prefix>_fst.csv```
@@ -74,8 +78,8 @@ python main.py -i <input_file_prefix>
 ### Step 4: Initializing R to get histogram (optional)
 1. Open create_plots.r, and begin following the instructions, pasting each line into your R editor, whether that be your personal command line, RStudio, or something else.
 *Please Note: On line 3,  enter ```<input_prefix_all_output.csv> ```, as this data will be relevant to the generated histogram. On line 21 is where you can name your histogram, and do so as you wish.<br />
-[Example of P-value Histogram](rand_density_plot.pdf)<br />
-[Visualization of Compares](rand_fst_exons_plot.pdf)<br />
+*[Example of P-value Histogram](rand_density_plot.pdf)<br />
+*[Visualization of Compares](rand_fst_exons_plot.pdf)<br />
 ## Outputs
 
 The outputs of this program is as follows:
