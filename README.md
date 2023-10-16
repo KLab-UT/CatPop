@@ -43,12 +43,17 @@ To get the full usage out of the repository, you will need:
 1. This program takes in two files as input. Your two files must have a
    particular format.
 2. For the categorical assignment file, please review
-   ```rand_example_categories.csv``` for the proper format assignments. Note that you may label these as you wish,
+   ```rand_example_categories.csv``` for the proper format assignments.
+   This image has a basic layout:
+   ![Image][category_csv_structure]
+   Note that you may label these as you wish,
    but the columns need to be labelled with the underscore between population names.
    A consistent naming convention for you categories will make your results much
    more understandable. This input file should be named:
    ```<input_prefix>_categories.csv```
 3. For the format of the fst file, please review ```rand_example_fst.csv```.
+   This image shows a basic layout:
+   ![Image1](fst_csv_structure)
    Once again you may label things as you wish, but be consistent with
    formatting. Also, the input file needs to be named
    ```<input_prefix>_fst.csv```
