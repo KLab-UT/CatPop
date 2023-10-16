@@ -69,7 +69,8 @@ python main.py -i <input_file_prefix>
 ### Step 4: Initializing R to get histogram (optional)
 1. Open create_plots.r, and begin following the instructions, pasting each line into your R editor, whether that be your personal command line, RStudio, or something else.
 *Please Note: On line 3,  enter ```<input_prefix_all_output.csv> ```, as this data will be relevant to the generated histogram. On line 21 is where you can name your histogram, and do so as you wish.
-
+[Example of P-value Histogram](rand_density_plot.pdf)
+[Visualization of Compares](rand_fst_exons_plot.pdf)
 ## Outputs
 
 The outputs of this program is as follows:
