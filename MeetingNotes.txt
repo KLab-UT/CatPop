@@ -1,3 +1,9 @@
+18 October 2023 (meeting with Randy and Baylee)
+Baylee created an awesome ReadMe, and Randy got SLiM running (kind of...)
+--- Create argument parser for R script (so the output from _all_outputs.csv can be used as an argument)
+----- This way, the script can be run using the command 'R create_plots.r prefix_all_outputs.csv'
+--- Randy will create a few SLiM-simulated scenarios
+
 4 October 2023 (meeting with Randy and Baylee)
 Randy is looking into how to use SLiM to model evolution under expected scenarios (to use for testing CatPop)
 Baylee is updating the readme to include installation and running instructions
