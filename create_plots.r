@@ -1,6 +1,6 @@
-setwd(insert-path-to-repository)
+setwd("/Users/bayleechristensen/OneDrive - Utah Tech University/FallClasses2023/Research/CatPop")
 # path MUST be in quotes
-dat <- read.csv('all_output.csv')
+dat <- read.csv('Hu_2021_orchids_all_output.csv')
 # file MUST be in quotes
 # imports data as dataframe with heading
 

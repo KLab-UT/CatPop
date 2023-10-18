@@ -18,7 +18,7 @@ def make_fst_file(length, number_of_genes):
     for count, i in enumerate(populations):
         for j in populations[count+1:]:
             population_pairs = population_pairs + ("Fst_"+i+"_"+j) + ","
-    with open("random_fst_test.csv", "w") as rft:
+    with open("rand_example_fst.csv", "w") as rft:
         rft.write("geneID," + population_pairs)
         for i in range(number_of_genes):
             i = str(i+1)
@@ -27,4 +27,4 @@ def make_fst_file(length, number_of_genes):
             rft.write("\ngene_"+ i + "," + fsts)
 
 # make_fst_file(length_of_populations_list)
-# make_fst_file(8, 10000)
+make_fst_file(8, 200)
