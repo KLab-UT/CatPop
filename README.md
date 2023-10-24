@@ -63,7 +63,6 @@ To get the full usage out of the repository, you will need:
    ```<input_prefix>_fst.csv```
 
 *Please Note: comparisons with non-numeric fst values will be ignored.
-Not sure if needed note: Also, assign your True scenarios in your "categories.csv".
 
 ### Step 3: Running CatPop
 1. Ensure you have all the program requirements (see above)
@@ -96,29 +95,22 @@ generator. Please note, I already had all
 the program requirements installed. <br />
 
 1. I cloned repository using the command: <br />
-```git clone https://github.com/KLab-UT/CatPop.git```
+```
+git clone https://github.com/KLab-UT/CatPop.git
+```
 2. In the CatPop directory, I created the file 'rand_example_categories.csv', and named the populations,
    along with what 'category' they were in. The input prefix is therefore
    'rand_example'. Assign your categories in relation
-   to your data. For example, if I were looking at two closely related species,
-   such as the Kaibab Squirrel (found on the North side of the Grand Canyon) and the
-   Aber Squirrel (found on the South side of the Grand Cayon), I would assign
-   all of them with a unique population name, then assign Kaibabs to the North
-   category and Abers to the South category in the csv file. <br />
-   For example: <br />
-   Population, Category <br />
-   Kaibab1, North <br />
-   Kaibab2, North <br />
-   Aber1, South <br />
-   Aber2, South <br />
-   etc... <br />
+   to your data.
 3. I used the random number generator to obtain the 'genetic divergence' values,
    as well as formatting my file type. The file created was called
    'rand_example_fst.csv', which follows the input prefix naming convention of
    'rand_example'.
 4. Now that my files were formatted and named appropriately, I ran CatPop on my
    csv files with this function:
-   ``` python3 main.py -i rand_example ```
+   ```
+   python3 main.py -i rand_example
+   ```
 
 # Other Information
 If you get an error saying "Fst_Pop1_Pop2 and Fst_Pop2_Pop1 not found, check your input files and verify that the populations are spelled exactly the same in the fst and ecotype files.
