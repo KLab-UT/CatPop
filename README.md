@@ -11,6 +11,7 @@ There is also a random number generator to ensure the accuracy of your data.
 * Program Requirements
 * Instructions
 * Outputs
+* Example
 * Other Information
 * Flow of Data
 
@@ -48,8 +49,6 @@ To get the full usage out of the repository, you will need:
    <br />
    ![Image](category_csv_structure.png)<br />
    <br />
-   Note that you may label these as you wish,
-   but the columns need to be labelled with the underscore between population names.
    A consistent naming convention for you categories will make your results much
    more understandable. This input file should be named:
    ```<input_prefix>_categories.csv```
@@ -58,7 +57,8 @@ To get the full usage out of the repository, you will need:
    <br />
    ![Image1](fst_csv_structure.png)<br />
    <br />
-   Once again you may label things as you wish, but be consistent with
+   Note that you may label these as you wish,
+   but the columns need to be labelled with the underscore between population names.
    formatting. Also, the input file needs to be named
    ```<input_prefix>_fst.csv```
 
@@ -89,6 +89,36 @@ The outputs of this program is as follows:
 * log.txt, which will contain all the genes with a p-value below .05
 * sig_output.csv shows the significant genes
 * all_output.csv reports every delta_fst and p-values for the genes
+
+# Example
+The following is how I ran CatPop on my terminal after using the random value
+generator. Please note, I already had all
+the program requirements installed. <br />
+
+1. I cloned repository using the command: <br />
+```git clone https://github.com/KLab-UT/CatPop.git```
+2. In the CatPop directory, I created the file 'rand_example_categories.csv', and named the populations,
+   along with what 'category' they were in. The input prefix is therefore
+   'rand_example'. Assign your categories in relation
+   to your data. For example, if I were looking at two closely related species,
+   such as the Kaibab Squirrel (found on the North side of the Grand Canyon) and the
+   Aber Squirrel (found on the South side of the Grand Cayon), I would assign
+   all of them with a unique population name, then assign Kaibabs to the North
+   category and Abers to the South category in the csv file. <br />
+   For example: <br />
+   Population, Category <br />
+   Kaibab1, North <br />
+   Kaibab2, North <br />
+   Aber1, South <br />
+   Aber2, South <br />
+   etc... <br />
+3. I used the random number generator to obtain the 'genetic divergence' values,
+   as well as formatting my file type. The file created was called
+   'rand_example_fst.csv', which follows the input prefix naming convention of
+   'rand_example'.
+4. Now that my files were formatted and named appropriately, I ran CatPop on my
+   csv files with this function:
+   ``` python3 main.py -i rand_example ```
 
 # Other Information
 If you get an error saying "Fst_Pop1_Pop2 and Fst_Pop2_Pop1 not found, check your input files and verify that the populations are spelled exactly the same in the fst and ecotype files.
