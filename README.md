@@ -82,15 +82,16 @@ python main.py -i <input_file_prefix>
 pwd
 ```
 And copying the path.
-3. NOT REQUIRED, but that there are several options you can adjust when using this command. You can label your output file what you prefer by changing the text after '-o', change the p-value delineation by adjust the value after '-p', and change the amount of bins with '-b'.
+<br />
+3. NOT REQUIRED, but that there are several options you can adjust when using this command. You can label your output file what you prefer by changing the text after '-o', change the p-value delineation by adjust the value after '-p', and change the amount of bins with '-b'. <br />
 4. You MUST change your working directory after the '-d'. This is what you
-  copied after using the ```pwd``` command.
+  copied after using the ```pwd``` command. <br />
 5. There is a R Argument parser within the directory. The command that will work
    for you is a variation of this command:
 ```
 Rscript create_plots.R -i <input_prefix>_all_output.csv -o <input_prefix>_plots.pdf -p 0.05 -b 50 -d '/your/path/where/you/saved/CatPop'
 ```
-Below is what the plots look like.
+Below is what the plots look like.<br />
 *[Example of P-value Histogram](rand_density_plot.pdf)<br />
 *[Visualization of Compares](rand_fst_exons_plot.pdf)<br />
 ## Outputs
