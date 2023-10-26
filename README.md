@@ -77,12 +77,10 @@ python main.py -i <input_file_prefix>
 ### Step 4: Initializing R to get histogram (optional)
 1. Ensure you have the "optparse" package for R installed. If you don't have
    this package, this command will not work!
-2. Next, I'd recommend using the command:
+2. Next, I'd recommend using the command and copying your path:
 ```
 pwd
 ```
-And copying the path.
-<br />
 3. NOT REQUIRED, but that there are several options you can adjust when using this command. You can label your output file what you prefer by changing the text after '-o', change the p-value delineation by adjust the value after '-p', and change the amount of bins with '-b'. <br />
 4. You MUST change your working directory after the '-d'. This is what you
   copied after using the ```pwd``` command. <br />
@@ -128,8 +126,9 @@ git clone https://github.com/KLab-UT/CatPop.git
    ```
 5. To get the Rscript to automatically generate my plots with this title:
 ```
-   rand_example_density_plot.pdf ```,
-   I used this command:
+   rand_example_density_plot.pdf
+```
+I used this command:
 ```
 Rscript create_plots.R -i rand_example_all_output.csv -o rand_example_density_plot.pdf -p 0.05 -b 50 -d '/Users/myusername/GitHubDirectories/CatPop'
 ```
