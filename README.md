@@ -19,9 +19,9 @@ There is also a random number generator to ensure the accuracy of your data.
 To get the full usage out of the repository, you will need:
 1. Git
 2. Latest version of Python
-3. R, with the packages ggplot2, reshape2, and tidyverse. To install these
+3. R, with the packages optparse, ggplot2, reshape2, and tidyverse. To install these
    packages associated with R, enter R and the command to install is:
-   ```install.packages("tidyverse", "ggplot2", "reshape2") ```
+   ```install.packages("optparse", "tidyverse", "ggplot2", "reshape2") ```
 
 # Instructions
 ### Step 1: Cloning the Repository
@@ -75,8 +75,22 @@ python main.py -i <input_file_prefix>
   files.
 
 ### Step 4: Initializing R to get histogram (optional)
-1. Open create_plots.r, and begin following the instructions, pasting each line into your R editor, whether that be your personal command line, RStudio, or something else.
-*Please Note: On line 3,  enter ```<input_prefix_all_output.csv> ```, as this data will be relevant to the generated histogram. On line 21 is where you can name your histogram, and do so as you wish.<br />
+1. Ensure you have the "optparse" package for R installed. If you don't have
+   this package, this command will not work!
+2. Next, I'd recommend using the command:
+```
+pwd
+```
+And copying the path.
+3. NOT REQUIRED, but that there are several options you can adjust when using this command. You can label your output file what you prefer by changing the text after '-o', change the p-value delineation by adjust the value after '-p', and change the amount of bins with '-b'.
+4. You MUST change your working directory after the '-d'. This is what you
+  copied after using the ```pwd``` command.
+5. There is a R Argument parser within the directory. The command that will work
+   for you is a variation of this command:
+```
+Rscript create_plots.R -i <input_prefix>_all_output.csv -o <input_prefix>_plots.pdf -p 0.05 -b 50 -d '/your/path/where/you/saved/CatPop'
+```
+Below is what the plots look like.
 *[Example of P-value Histogram](rand_density_plot.pdf)<br />
 *[Visualization of Compares](rand_fst_exons_plot.pdf)<br />
 ## Outputs
@@ -111,7 +125,13 @@ git clone https://github.com/KLab-UT/CatPop.git
    ```
    python3 main.py -i rand_example
    ```
-
+5. To get the Rscript to automatically generate my plots with this title:
+```
+   rand_example_density_plot.pdf ```,
+   I used this command:
+```
+Rscript create_plots.R -i rand_example_all_output.csv -o rand_example_density_plot.pdf -p 0.05 -b 50 -d '/Users/myusername/GitHubDirectories/CatPop'
+```
 # Other Information
 If you get an error saying "Fst_Pop1_Pop2 and Fst_Pop2_Pop1 not found, check your input files and verify that the populations are spelled exactly the same in the fst and ecotype files.
 
