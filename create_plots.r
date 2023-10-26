@@ -3,7 +3,7 @@ library(optparse)
 # Define the command-line args
 option_list = list(
   make_option(c("-i", "--input"), type = "character", help = "Input CSV file, with <input_prefix>_all_outputs.csv"),
-  make_option(c("-d", "--directory"), type = "character", help "Set working directory where CatPop located"),
+  make_option(c("-d", "--directory"), type = "character", help = "path to working directory"),
   make_option(c("-o", "--output"), type = "character", help = "Output PDF file"),
   make_option(c("-p", "--pvalue"), type = "numeric", default = 0.05, help = "P-value threshold for vertical line"),
   make_option(c("-b", "--bins"), type = "integer", default = 50, help = "Number of bins for histogram")
@@ -30,11 +30,10 @@ dat$P.value
 library(ggplot2)
 
 # plot your data! Assign the plot to a variable called 'density_plot'
-density_plot = ggplot(dat, aes(x=P.value)) + geom_vline(xintercept= opt$pvalue, linetype="dashed", size = 1, color = "#F68A8A") + geom_histogram(color="black" , fill="white", bins opt$bins)
+density_plot = ggplot(dat, aes(x=P.value)) + geom_vline(xintercept= opt$pvalue, linetype="dashed", linewidth = 1, color = "#F68A8A") + geom_histogram(color="black" , fill="white", bins=opt$bins)
 # check out your plot and save it write your plot to a file:
-pdf("opt$output")
+pdf(opt$output)
 density_plot
-dev.off()
 
 # For this section you will use a few other R packages
 library(reshape2)
@@ -57,3 +56,5 @@ fst_exons_Plot <- dat_melted %>%
   geom_hline(yintercept=0.02, linetype="dashed", size = 1, color = "#F68A8A")
   theme(legend.position = "top")
 fst_exons_Plot
+
+dev.off()
