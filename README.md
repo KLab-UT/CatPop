@@ -47,7 +47,7 @@ To get the full usage out of the repository, you will need:
    ```rand_example_categories.csv``` for the proper format assignments.<br />
    This image has a basic layout:<br />
    <br />
-   ![Image](category_csv_structure.png)<br />
+   ![Image](Diagrams/category_csv_structure.png)<br />
    <br />
    A consistent naming convention for you categories will make your results much
    more understandable. This input file should be named:
@@ -55,7 +55,7 @@ To get the full usage out of the repository, you will need:
 3. For the format of the fst file, please review ```rand_example_fst.csv```.
    This image shows a basic layout:<br />
    <br />
-   ![Image1](fst_csv_structure.png)<br />
+   ![Image1](Diagrams/fst_csv_structure.png)<br />
    <br />
    Note that you may label these as you wish,
    but the columns need to be labelled with the underscore between population names.
@@ -90,8 +90,8 @@ pwd
 Rscript create_plots.R -i <input_prefix>_all_output.csv -o <input_prefix>_plots.pdf -p 0.05 -b 50 -d '/your/path/where/you/saved/CatPop'
 ```
 Below is what the plots look like.<br />
-*[Example of P-value Histogram](rand_density_plot.pdf)<br />
-*[Visualization of Compares](rand_fst_exons_plot.pdf)<br />
+*[Example of P-value Histogram](Diagrams/rand_density_plot.pdf)<br />
+*[Visualization of Compares](Diagrams/rand_fst_exons_plot.pdf)<br />
 ## Outputs
 
 The outputs of this program is as follows:
@@ -139,4 +139,4 @@ If you get an error saying "Fst_Pop1_Pop2 and Fst_Pop2_Pop1 not found, check you
 
 Please refer to the image below to understand the flow of data through the
 program.
-![Data Flow](data_flow.png)
+![Data Flow](Diagrams/data_flow.png)
