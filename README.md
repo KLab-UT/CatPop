@@ -9,19 +9,31 @@ There is also a random number generator to ensure the accuracy of your data.
 
 # Contents
 * Program Requirements
+* Quick Start
 * Instructions
 * Outputs
 * Example
 * Other Information
 * Flow of Data
 
-## Program Requirements
+# Program Requirements
 To get the full usage out of the repository, you will need:
 1. Git
 2. Latest version of Python
 3. R, with the packages optparse, ggplot2, reshape2, and tidyverse. To install these
    packages associated with R, enter R and the command to install is:
    ```install.packages("optparse", "tidyverse", "ggplot2", "reshape2") ```
+# Quick Start
+1. Assuming you have the repository cloned and meet the program requirements,
+   all you need to do is format your files, then you can use the bash function,
+   run_all_scripts.sh
+2. To see correct how to correctly format your files, please navigate to "Step
+   2: Implementing File Structure within the Instructions.
+3. Lastly, you can type in this command to get all outputs, including full
+   function of CatPop and the graphs.
+   ```
+   ./run_all_functions.sh -i <input_prefix>
+   ```
 
 # Instructions
 ### Step 1: Cloning the Repository
@@ -40,7 +52,7 @@ To get the full usage out of the repository, you will need:
    machine in the subdirectory with the same name as the repository. You now
    should navigate into this directory to use functions this repository has.
 
-### Step 2: Implementing file structure
+### Step 2: Implementing File Structure
 1. This program takes in two files as input. Your two files must have a
    particular format.
 2. For the categorical assignment file, please review
@@ -96,7 +108,7 @@ Below is what the plots look like.<br />
 
 The outputs of this program is as follows:
 * p-value plot, which will need to be initilaized through R
-* Ecotype comparison of within and between plot
+* Ecotype comparison of within and between plot, initialized through R
 * results.txt, which will list all the genes and their related p-values
 * log.txt, which will contain all the genes with a p-value below .05
 * sig_output.csv shows the significant genes
@@ -132,6 +144,11 @@ I used this command:
 ```
 Rscript create_plots.R -i rand_example_all_output.csv -o rand_example_density_plot.pdf -p 0.05 -b 50 -d '/Users/myusername/GitHubDirectories/CatPop'
 ```
+6. Alternatively, to complete this whole process using one command, I would use:
+```
+./run_all_functions.sh -i <input_prefix>
+```
+
 # Other Information
 If you get an error saying "Fst_Pop1_Pop2 and Fst_Pop2_Pop1 not found, check your input files and verify that the populations are spelled exactly the same in the fst and ecotype files.
 
