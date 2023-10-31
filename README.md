@@ -146,7 +146,7 @@ Rscript create_plots.R -i rand_example_all_output.csv -o rand_example_density_pl
 ```
 6. Alternatively, to complete this whole process using one command, I would use:
 ```
-./run_all_functions.sh -i <input_prefix>
+./run_all_functions.sh -i rand_example
 ```
 
 # Other Information
