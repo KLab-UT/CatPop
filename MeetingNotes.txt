@@ -1,3 +1,7 @@
+1 Nov 2023 (meeting with Randy and Baylee)
+Baylee created a script to run everything, and it works! She will now start drafting the powerpoint for UCUR
+Randy will <still> create a few more SLiM-simulated scenarios
+
 18 October 2023 (meeting with Randy and Baylee)
 Baylee created an awesome ReadMe, and Randy got SLiM running (kind of...)
 --- Create argument parser for R script (so the output from _all_outputs.csv can be used as an argument)
