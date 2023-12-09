@@ -5,7 +5,7 @@ population assignments, performs a permutation test for each comparison, and
 generates a p-value distribution plot, along with graphs that show the association of between/within
 ecotype comparisons, and additionally returns the genes of significance.
 
-There is also a random data generator to ensure the accuracy of your data.
+There is also a random data generator to ensure the accuracy of results.
 
 Authors: Reagan McKee, Baylee Christensen, Dante Celani, Candice Johnson
 
