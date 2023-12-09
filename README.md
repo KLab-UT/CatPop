@@ -7,7 +7,7 @@ ecotype comparisons, and additionally returns the genes of significance.
 
 There is also a random number generator to ensure the accuracy of your data.
 
-Authors: Reagan McKee, Baylee Christensen, Dante Celani, Candice Johnson
+Authors: Reagan McKee, Baylee Christensen, Dante Celani, Candice Johnson in collaboration with Klab at Utah Tech University
 
 # Contents
 * Program Requirements
