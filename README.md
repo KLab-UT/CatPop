@@ -10,13 +10,13 @@ There is also a random data generator to ensure the accuracy of results.
 Authors: Reagan McKee, Baylee Christensen, Dante Celani, Candice Johnson
 
 # Contents
-* Program Requirements
-* Quick Start
-* Instructions
-* Outputs
-* Example
-* Other Information
-* Flow of Data
+- [Program Requirements](#requirements)
+- [Quick Start](#quick-start)
+- [Instructions](#instructions)
+- [Outputs](#outputs)
+- [Example](#example)
+- [Other Information](#other-info)
+- [Flow of Data](#data-flow)
 
 # Program Requirements
 To get the full usage out of the repository, you will need:
