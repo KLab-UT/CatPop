@@ -1,8 +1,6 @@
 # CatPop Combinatorics
 
-   <br />
-   ![Image](Diagrams/CatPop_logo.png)<br />
-   <br />
+![Logo](Diagrams/CatPop_logo.png)<br />
 
 This software package uses combinatorics to create all possible scenarios of two
 population assignments, performs a permutation test for each comparison, and
