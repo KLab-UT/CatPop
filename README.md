@@ -1,5 +1,9 @@
 # CatPop Combinatorics
 
+   <br />
+   ![Image](Diagrams/CatPop_logo.png)<br />
+   <br />
+
 This software package uses combinatorics to create all possible scenarios of two
 population assignments, performs a permutation test for each comparison, and
 generates a p-value distribution plot, along with graphs that show the association of between/within
