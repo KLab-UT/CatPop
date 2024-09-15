@@ -1,0 +1,71 @@
+******************************
+dictdict
+*********************************
+
+
+new item:
+microsat_average_outlier_loci
+{'Fst_SR_AR': '0.2475', 'Fst_SR_BS': '0.21784', 'Fst_SR_AT': '0.72847', 'Fst_SR_CT': '0.73832', 'Fst_SR_MI': '0.79715', 'Fst_AR_BS': '0.05128', 'Fst_AR_AT': '0.67336', 'Fst_AR_CT': '0.6764', 'Fst_AR_MI': '0.73618', 'Fst_BS_AT': '0.64762', 'Fst_BS_CT': '0.64937', 'Fst_BS_MI': '0.71197', 'Fst_AT_CT': '0.05099', 'Fst_AT_MI': '0.31034', 'Fst_CT_MI': '0.25045'}
+
+
+new item:
+microsat_average_neutral_loci
+{'Fst_SR_AR': '0.1632', 'Fst_SR_BS': '0.1363', 'Fst_SR_AT': '0.04735', 'Fst_SR_CT': '0.29719', 'Fst_SR_MI': '0.26584', 'Fst_AR_BS': '0.23356', 'Fst_AR_AT': '0.29339', 'Fst_AR_CT': '0.25936', 'Fst_AR_MI': '0.22429', 'Fst_BS_AT': '0.0346', 'Fst_BS_CT': '0.33442', 'Fst_BS_MI': '0.30703', 'Fst_AT_CT': '0.27442', 'Fst_AT_MI': '0.17709', 'Fst_CT_MI': '0.15502'}
+
+
+
+******************************
+true_lists
+*********************************
+[['SR', 'AR', 'BS'], ['AT', 'CT'], ['MI']]
+
+
+
+******************************
+indv
+*********************************
+indv: ['SR', 'AR', 'BS', 'AT', 'CT']
+
+
+
+******************************
+combinations
+*********************************
+combinations: [[['AR', 'SR'], ['AT', 'BS', 'CT']], [['BS', 'SR'], ['AR', 'AT', 'CT']], [['AT', 'SR'], ['AR', 'BS', 'CT']], [['CT', 'SR'], ['AR', 'AT', 'BS']], [['AR', 'BS'], ['AT', 'CT', 'SR']], [['AR', 'AT'], ['BS', 'CT', 'SR']], [['AR', 'CT'], ['AT', 'BS', 'SR']], [['AT', 'BS'], ['AR', 'CT', 'SR']], [['BS', 'CT'], ['AR', 'AT', 'SR']], [['AT', 'CT'], ['AR', 'BS', 'SR']]]
+length: 10
+
+
+
+******************************
+permutation test
+*********************************
+microsat_average_outlier_loci
+
+True delta fst: 0.544
+
+p-value: 0.1
+
+Possible delta fsts: [0.115, 0.105, 0.097, 0.1, 0.127, 0.17, 0.166, 0.182, 0.178, 0.544]
+
+Qualifiers (those with delta fst ≥ true delta fst): 1
+
+Total: 10
+
+
+
+
+microsat_average_neutral_loci
+
+True delta fst: 0.009
+
+p-value: 0.9
+
+Possible delta fsts: [0.009, 0.056, 0.019, 0.012, 0.009, 0.096, 0.147, 0.031, 0.004, 0.009]
+
+Qualifiers (those with delta fst ≥ true delta fst): 9
+
+Total: 10
+
+
+
+
